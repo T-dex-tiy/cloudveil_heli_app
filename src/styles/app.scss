@@ -1,3 +1,37 @@
-html {
-  background-color: red;
+//Fonts
+@font-face{
+  font-family:Main;
+  src:url('./fonts/cloudveil_font.otf');
+}
+
+html{
+  padding:0;
+  margin:0;
+  @media (max-width:850px) {
+    background-color: blue;
+  }
+}
+
+// Head title
+.header{
+  height:7em;
+  width:100%;
+  display:flex;
+  background-color: #E0E0E0;
+  justify-content: flex-end;
+
+  // Phone display
+  @media (max-width:850px) {
+    color: red;
+  }
+}
+.title{
+  font-family:Main;
+  font-size:2em;
+  padding-right:.25em;
+  margin-right: .25em;
+}
+.mainLogo{
+  height:2em;
+  width:3em;
 }

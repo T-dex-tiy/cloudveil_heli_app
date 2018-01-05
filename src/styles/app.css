@@ -1,4 +1,31 @@
+@font-face {
+  font-family: Main;
+  src: url("./fonts/cloudveil_font.otf"); }
 html {
-  background-color: red; }
+  padding: 0;
+  margin: 0; }
+  @media (max-width: 850px) {
+    html {
+      background-color: blue; } }
+
+.header {
+  height: 7em;
+  width: 100%;
+  display: flex;
+  background-color: #E0E0E0;
+  justify-content: flex-end; }
+  @media (max-width: 850px) {
+    .header {
+      color: red; } }
+
+.title {
+  font-family: Main;
+  font-size: 2em;
+  padding-right: .25em;
+  margin-right: .25em; }
+
+.mainLogo {
+  height: 2em;
+  width: 3em; }
 
 /*# sourceMappingURL=app.css.map */

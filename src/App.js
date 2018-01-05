@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import firebase from 'firebase';
 import Rebase from 're-base';
 import './styles/app.css';
+import mainLogo from './styles/logos/mainlogo2.png';
 
   const app = firebase.initializeApp({
     apiKey: "AIzaSyAM0DL6QzhVONFmxP5OHWGi9Vj4lS2RbbM",
@@ -35,12 +36,14 @@ componentWillUnmount() {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div>
+          <header className="header">
+            <div><h1 className="title">Cloudveil Heli</h1></div>
+            <div><img className="mainLogo" src={mainLogo}/></div>
+          </header>
+        </div>
+        <div className="mainArea">
+        </div>
       </div>
     );
   }
