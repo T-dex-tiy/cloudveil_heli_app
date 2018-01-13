@@ -22,16 +22,53 @@ html{
 
   // Phone display
   @media (max-width:850px) {
-    color: red;
+    height:3em;
   }
+  //tablet break point
+  @media (min-width:850px) and (max-width: 1024px){
+    font-size:2em;
+    padding-right: .1em;
+    margin-right: .1em;
+    height: 4em;
+  }
+
 }
 .title{
   font-family:Main;
   font-size:2em;
   padding-right:.25em;
   margin-right: .25em;
+//Phone break point
+  @media (max-width:850px) {
+    font-size:.75em;
+    padding-right: .1em;
+    margin-right: .1em;
+  }
+  //tablet break point
+  @media (min-width:850px) and (max-width: 1024px) {
+    font-size:.75em;
+    padding-right: .1em;
+    margin-right: .1em;
+  }
 }
 .mainLogo{
   height:2em;
   width:3em;
+
+  //phone break point
+  @media (max-width:850px) {
+    height:1em;
+    width:1.5em;
+  }
+
+  //tablet break point
+  @media (min-width:850px) and (max-width: 1024px) {
+
+  }
+}
+
+//main area
+
+.mainArea{
+  
 }

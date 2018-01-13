@@ -16,16 +16,36 @@ html {
   justify-content: flex-end; }
   @media (max-width: 850px) {
     .header {
-      color: red; } }
+      height: 3em; } }
+  @media (min-width: 850px) and (max-width: 1024px) {
+    .header {
+      font-size: 2em;
+      padding-right: .1em;
+      margin-right: .1em;
+      height: 4em; } }
 
 .title {
   font-family: Main;
   font-size: 2em;
   padding-right: .25em;
   margin-right: .25em; }
+  @media (max-width: 850px) {
+    .title {
+      font-size: .75em;
+      padding-right: .1em;
+      margin-right: .1em; } }
+  @media (min-width: 850px) and (max-width: 1024px) {
+    .title {
+      font-size: .75em;
+      padding-right: .1em;
+      margin-right: .1em; } }
 
 .mainLogo {
   height: 2em;
   width: 3em; }
+  @media (max-width: 850px) {
+    .mainLogo {
+      height: 1em;
+      width: 1.5em; } }
 
 /*# sourceMappingURL=app.css.map */

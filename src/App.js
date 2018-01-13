@@ -3,6 +3,8 @@ import firebase from 'firebase';
 import Rebase from 're-base';
 import './styles/app.css';
 import mainLogo from './styles/logos/mainlogo2.png';
+import Calendar from './calendar/datePicker';
+import Pics from './customerPics/pictures';
 
   const app = firebase.initializeApp({
     apiKey: "AIzaSyAM0DL6QzhVONFmxP5OHWGi9Vj4lS2RbbM",
@@ -43,6 +45,7 @@ componentWillUnmount() {
           </header>
         </div>
         <div className="mainArea">
+        <Calendar/>
         </div>
       </div>
     );
