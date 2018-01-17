@@ -24,6 +24,11 @@ html {
       margin-right: .1em;
       height: 4em; } }
 
+.header_title {
+  display: flex;
+  justify-content: space-between;
+  margin-right: -4em; }
+
 .title {
   font-family: Main;
   font-size: 2em;
@@ -41,11 +46,34 @@ html {
       margin-right: .1em; } }
 
 .mainLogo {
-  height: 2em;
-  width: 3em; }
-  @media (max-width: 850px) {
+  height: 3em;
+  width: 4em;
+  padding-right: 1em; }
+  @media (max-width: 950px) {
     .mainLogo {
       height: 1em;
       width: 1.5em; } }
+  @media (min-width: 750px) and (max-width: 1366px) {
+    .mainLogo {
+      height: 2em;
+      width: 3em; } }
+
+.userButton {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  align-self: flex-end; }
+  .userButton .userLogIn {
+    align-self: baseline;
+    justify-content: flex-end;
+    align-content: flex-end;
+    margin-right: 2em;
+    margin-bottom: .5em; }
+
+.mainArea {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5vw; }
 
 /*# sourceMappingURL=app.css.map */
