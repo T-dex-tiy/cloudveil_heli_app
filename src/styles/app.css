@@ -3,7 +3,8 @@
   src: url("./fonts/cloudveil_font.otf"); }
 html {
   padding: 0;
-  margin: 0; }
+  margin: 0;
+  width: 100%; }
   @media (max-width: 850px) {
     html {
       background-color: blue; } }
@@ -58,6 +59,21 @@ html {
       height: 2em;
       width: 3em; } }
 
+.top-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  background-color: #50AADF;
+  border: .25em solid black; }
+  .top-bar .navigation {
+    display: flex;
+    justify-content: center;
+    border: .25em solid black;
+    width: 100%;
+    margin: 0;
+    padding: 0; }
+
 .userButton {
   display: flex;
   align-items: flex-end;
@@ -68,12 +84,14 @@ html {
     justify-content: flex-end;
     align-content: flex-end;
     margin-right: 2em;
-    margin-bottom: .5em; }
+    margin-bottom: .5em;
+    background-color: black;
+    color: white; }
 
 .mainArea {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   padding: 5vw; }
 
 /*# sourceMappingURL=app.css.map */
