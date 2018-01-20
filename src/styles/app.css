@@ -29,6 +29,9 @@ html {
   display: flex;
   justify-content: space-between;
   margin-right: -4em; }
+  @media (min-width: 850px) and (max-width: 1024px) {
+    .header_title {
+      margin-right: -3em; } }
 
 .title {
   font-family: Main;
@@ -48,31 +51,30 @@ html {
 
 .mainLogo {
   height: 3em;
-  width: 4em;
-  padding-right: 1em; }
+  width: 4em; }
   @media (max-width: 950px) {
     .mainLogo {
-      height: 1em;
-      width: 1.5em; } }
-  @media (min-width: 750px) and (max-width: 1366px) {
+      height: .75em;
+      width: 1em; } }
+  @media (min-width: 750px) and (max-width: 1240px) {
     .mainLogo {
       height: 2em;
-      width: 3em; } }
+      width: 3em;
+      padding-right: 1em; } }
 
 .top-bar {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 100%;
-  background-color: #50AADF;
-  border: .25em solid black; }
+  background-color: #50AADF; }
   .top-bar .navigation {
     display: flex;
     justify-content: center;
     border: .25em solid black;
     width: 100%;
     margin: 0;
-    padding: 0; }
+    padding: 0;
+    font-size: 1em; }
 
 .userButton {
   display: flex;
