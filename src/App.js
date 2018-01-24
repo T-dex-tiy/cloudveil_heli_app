@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import firebase from 'firebase';
 import Rebase from 're-base';
+import firebase, {provider, auth} from './firebase/firebase'
 import './styles/app.css';
 import{EventEmitter} from 'events';
 import Calendar from './calendar/datePicker';
@@ -8,14 +8,8 @@ import Header from './header';
 import Pics from './customerPics/pictures';
 import NavBar from './navComponents';
 
-  const app = firebase.initializeApp({
-    apiKey: "AIzaSyAM0DL6QzhVONFmxP5OHWGi9Vj4lS2RbbM",
-    authDomain: "bluebirdheli-dd1f5.firebaseapp.com",
-    databaseURL: "https://bluebirdheli-dd1f5.firebaseio.com",
-    storageBucket: "bluebirdheli-dd1f5.appspot.com",
-  });
 
-const base=Rebase.createClass(app.database());
+const base=Rebase.createClass(firebase.database());
 
 class App extends Component {
   constructor(props) {
