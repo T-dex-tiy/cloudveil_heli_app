@@ -3,8 +3,8 @@ import firebase from 'firebase';
 import Rebase from 're-base';
 import './styles/app.css';
 import{EventEmitter} from 'events';
-import mainLogo from './styles/logos/mainlogo2.png';
 import Calendar from './calendar/datePicker';
+import Header from './header';
 import Pics from './customerPics/pictures';
 import NavBar from './navComponents';
 
@@ -61,15 +61,7 @@ userScreen({newLandingPage}){
     return (
       <div className="App">
         <div>
-          <header className="header">
-            <div className="header_title">
-            <div><h1 className="title">Cloudveil Heli</h1></div>
-            <div><img className="mainLogo" src={mainLogo}/></div>
-          </div>
-          <div className="userButton">
-            <button className="userLogIn">Log Out</button>
-          </div>
-          </header>
+          <Header/>
           <NavBar eventEmitter={this.eventEmitter}
           landingPage={this.state.page}/>
         </div>
