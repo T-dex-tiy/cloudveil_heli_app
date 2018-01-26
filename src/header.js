@@ -6,6 +6,15 @@ import './styles/app.css';
 class Header extends Component{
   constructor(props){
     super(props)
+  this.loginAuth=this.loginAuth.bind(this);
+  // this.logout=this.logout.bind(this);
+  }
+  loginAuth(){
+    console.log("works!")
+      // this.setState({
+      //   user:user
+      // });
+
   }
   render(){
     return(
@@ -13,9 +22,6 @@ class Header extends Component{
           <div className="header_title"/>
           <h1 className="title">Cloudveil Heli</h1>
           <img className="mainLogo" src={mainLogo}/>
-          <div className="userButton">
-            <button className="userLogIn">Log Out</button>
-          </div>
       </div>
     )
   }

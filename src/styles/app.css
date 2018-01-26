@@ -69,6 +69,7 @@ html {
   background-color: #50AADF; }
   .top-bar .navigation {
     display: flex;
+    cursor: pointer;
     justify-content: center;
     border: .25em solid black;
     width: 100%;

@@ -18,7 +18,10 @@ class App extends Component {
     staging: {},
     page:null,
     user:null,
+    email:"dex.mills@dexmills.com",
+    password:"Nofxnofx1*=",
   };
+  this.login = this.login.bind(this);
 }
 
 componentDidMount() {
@@ -38,10 +41,25 @@ componentWillMount(){
       this.userScreen({newLandingPage: page})
     });
 }
+
+handleChange(e){
+
+}
+login(){
+  auth.signInWithPopup(provider)
+  .then((result)=>{
+    const user= result.user;
+    console.log("auth",auth)
+    this.setState({
+      user
+    });
+  });
+}
 userScreen({newLandingPage}){
   this.setState({page: newLandingPage})
   console.log(newLandingPage);
 }
+
   render() {
     var userPage
     if(this.state.page===1){
@@ -55,7 +73,10 @@ userScreen({newLandingPage}){
     return (
       <div className="App">
         <div>
-          <Header/>
+          <Header user={this.state.user} login={this.login.bind(this)}/>
+          <div className="userButton">
+            {this.state.user ? <button className="userLogIn" onCLick={this.logOut}>Log Out</button> :<button className="userLogIn" onClick={this.login}>Log In</button>}
+          </div>
           <NavBar eventEmitter={this.eventEmitter}
           landingPage={this.state.page}/>
         </div>

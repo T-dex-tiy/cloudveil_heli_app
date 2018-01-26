@@ -86,6 +86,7 @@ html{
   background-color:#50AADF;
   .navigation{
     display: flex;
+    cursor:pointer;
     justify-content: center;
     border:.25em solid black;
     width: 100%;
@@ -108,9 +109,9 @@ html{
 
 .userButton{
   display: flex;
-align-items: flex-end;
-justify-content: flex-end;
-align-self: flex-end;
+  align-items: flex-end;
+  justify-content: flex-end;
+  align-self: flex-end;
   .userLogIn{
   align-self:baseline;
   justify-content:flex-end;
