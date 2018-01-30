@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Rebase from 're-base';
-import firebase, {provider, auth} from './firebase/firebase'
+import firebase, {auth} from './firebase/firebase'
 import './styles/app.css';
 import{EventEmitter} from 'events';
 import Calendar from './calendar/datePicker';
@@ -46,14 +46,14 @@ handleChange(e){
 
 }
 login(){
-  auth.signInWithPopup(provider)
-  .then((result)=>{
-    const user= result.user;
-    console.log("auth",auth)
-    this.setState({
-      user
-    });
-  });
+  // auth.signInWithPopup(provider)
+  // .then((result)=>{
+  //   const user= result.user;
+  //   console.log("auth",auth)
+  //   this.setState({
+  //     user
+    // });
+  // });
 }
 userScreen({newLandingPage}){
   this.setState({page: newLandingPage})
