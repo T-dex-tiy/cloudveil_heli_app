@@ -17,11 +17,10 @@ class App extends Component {
   this.state = {
     staging: {},
     page:null,
-    user:null,
-    email:"dex.mills@dexmills.com",
-    password:"Nofxnofx1*=",
+    user:false,
   };
   this.login = this.login.bind(this);
+  this.logOut = this.logOut.bind(this);
 }
 
 componentDidMount() {
@@ -55,6 +54,11 @@ login(){
     // });
   // });
 }
+logOut(){
+  console.log("signed out!");
+  this.setState({user: !this.state.user })
+  firebase.auth().signOut();
+}
 userScreen({newLandingPage}){
   this.setState({page: newLandingPage})
   console.log(newLandingPage);
@@ -75,7 +79,7 @@ userScreen({newLandingPage}){
         <div>
           <Header user={this.state.user} login={this.login.bind(this)}/>
           <div className="userButton">
-            {this.state.user ? <button className="userLogIn" onCLick={this.logOut}>Log Out</button> :<button className="userLogIn" onClick={this.login}>Log In</button>}
+            {this.state.user ? <button className="userLogIn" onClick={this.logOut}>Log Out</button> :<button className="userLogIn" onClick={this.login}>Log In</button>}
           </div>
           <NavBar eventEmitter={this.eventEmitter}
           landingPage={this.state.page}/>

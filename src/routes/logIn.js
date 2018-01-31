@@ -22,18 +22,12 @@ renderLogin(){
   const pass= this.refs.pass.value;
   const email= this.refs.email.value;
   const promise=auth.signInWithEmailAndPassword(email, pass);
-  promise.catch(console.log(auth.message))
+  promise.catch(error=>console.log(error.code))
   // console.log("promise",promise)
-  console.log("auth displayName",promise.currentUser);
-  // auth().onAuthStateChanged(firebaseUser=>{
-  //   if(firbaseUser){
-  //     console.log(firebaseUser)
-  //   }
-  //   else{
-  //     console.log("not logged in");
-  //   }
-  // })
+  console.log("auth displayName", promise.currentUser.displayName);
 }
+
+
 
   render(){
     return(
