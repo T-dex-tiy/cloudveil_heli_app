@@ -71,7 +71,7 @@ userScreen({newLandingPage}){
       console.log("Calendar page")
     }
     if(this.state.page===2){
-      userPage= <Pics/>
+      userPage= <Pics dates={Object.keys(this.state.staging.days).map(key=>{return key})}/>
       console.log("Pics page")
     }
     return (
@@ -79,7 +79,7 @@ userScreen({newLandingPage}){
         <div>
           <Header user={this.state.user} login={this.login.bind(this)}/>
           <div className="userButton">
-            {this.state.user ? <button className="userLogIn" onClick={this.logOut}>Log Out</button> :<button className="userLogIn" onClick={this.login}>Log In</button>}
+            <button className="userLogIn" onClick={this.logOut}>Log Out</button>
           </div>
           <NavBar eventEmitter={this.eventEmitter}
           landingPage={this.state.page}/>

@@ -6,12 +6,11 @@ class PicturePicker extends Component{
     super(props)
   }
 
-
   render(){
     return(
-      <div>
-      <Pics/>
-      </div>
+    <option>
+      {this.props.index}
+    </option>
     )
   }
 }

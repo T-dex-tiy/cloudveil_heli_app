@@ -6,11 +6,10 @@ import logIn from './routes/logIn'
 import App from './App';
 import NavBar from './navComponents';
 import registerServiceWorker from './registerServiceWorker';
+import firebase, {auth} from './firebase/firebase.js'
 
 
-function Page(props){
 
-}
 const Root = ()=>{
   return(
     <Router>

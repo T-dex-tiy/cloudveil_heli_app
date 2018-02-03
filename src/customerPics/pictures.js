@@ -2,14 +2,19 @@ import React, { Component } from 'react';
 import Calendar from 'react-calendar'
 
 class Pics extends Component{
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
   }
-  render(){
-    return(
-      <div>
-      <h1>Test</h1>
-      </div>
+
+
+    render(){
+      return(
+        <div>
+        Dates:
+        <select name ="Dates" placeholder="Pick a date" value={this.props.dates}>
+        {Object.keys(this.props.dates)}
+        </select>
+        </div>
     )
   }
 }
