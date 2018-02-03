@@ -9,7 +9,7 @@ class PicturePicker extends Component{
   render(){
     return(
     <option>
-      {this.props.index}
+      {this.props.value}
     </option>
     )
   }
