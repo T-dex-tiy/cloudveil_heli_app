@@ -6,16 +6,10 @@ import './styles/app.css';
 class Header extends Component{
   constructor(props){
     super(props)
-  this.loginAuth=this.loginAuth.bind(this);
-  // this.logout=this.logout.bind(this);
-  }
-  loginAuth(){
-    console.log("works!")
-      // this.setState({
-      //   user:user
-      // });
+
 
   }
+
   render(){
     return(
       <div className="header">

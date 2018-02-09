@@ -104,7 +104,6 @@ html {
 .mainArea {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  padding: 5vw; }
+  justify-content: flex-end; }
 
 /*# sourceMappingURL=app.css.map */
