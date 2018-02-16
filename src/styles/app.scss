@@ -13,6 +13,7 @@ html{
   }
 }
 
+
 // Head title
 .header{
   height:7em;
@@ -128,4 +129,11 @@ html{
   display:flex;
   flex-direction:row;
   justify-content: flex-end;
+
+}
+
+.dropdownSelector{
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 }

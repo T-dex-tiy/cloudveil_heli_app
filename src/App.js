@@ -24,6 +24,8 @@ class App extends Component {
   this.logOut = this.logOut.bind(this);
 }
 
+
+
 componentDidMount() {
   base.syncState(`staging`, {
     context: this,
@@ -40,9 +42,10 @@ componentWillMount(){
    this.eventEmitter.addListener("landingPage",({page}) => {
       this.userScreen({newLandingPage: page})
     });
-    console.log(localStorage.uid)
+    const email = localStorage.getItem('email');
+    const uid= localStorage.getItem('uid');
+    console.log(email);
 }
-
 
 
 logOut(){
@@ -50,12 +53,16 @@ logOut(){
   this.setState({user: !this.state.user })
   firebase.auth().signOut();
   localStorage.removeItem('email');
-  // this.props.history.push('/');
+  localStorage.removeItem('uid');
+  localStorage.removeItem('access_token');
+  localStorage.removeItem('id_token');
 }
 userScreen({newLandingPage}){
   this.setState({page: newLandingPage})
   console.log(newLandingPage);
+  console.log(localStorage.email);
 }
+
 
   render() {
     var userPage
@@ -64,7 +71,8 @@ userScreen({newLandingPage}){
       console.log("Calendar page")
     }
     if(this.state.page===2){
-      userPage= <Pics dates={Object.keys(this.state.staging.days).map(key=>{return key})}/>
+      userPage= <Pics dates={Object.keys(this.state.staging.days).map(key=>{return key})}
+                picture={this.state.staging.images}/>
       console.log("Pics page")
     }
     return (

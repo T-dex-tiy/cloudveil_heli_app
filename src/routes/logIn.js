@@ -18,12 +18,10 @@ class logIn extends Component{
 
 
 renderLogin(){
-  console.log(this.props);
   const pass= this.refs.pass.value;
   const email= this.refs.email.value;
   const promise = auth.signInWithEmailAndPassword(email, pass);
   promise.then(snapshot=>{
-    console.log(snapshot, snapshot.displayName)
     let logInSucess="Logging in...";
     this.setState({ logInStatus:logInSucess })
     this.setState({ userlogin: true})

@@ -106,4 +106,9 @@ html {
   flex-direction: row;
   justify-content: flex-end; }
 
+.dropdownSelector {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end; }
+
 /*# sourceMappingURL=app.css.map */
