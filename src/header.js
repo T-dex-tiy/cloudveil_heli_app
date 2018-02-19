@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import mainLogo from './styles/logos/mainlogo2.png';
+import firebase, {auth} from './firebase/firebase.js';
+import LogIn from './routes/logIn'
 import './styles/app.css';
 
 
@@ -13,9 +15,11 @@ class Header extends Component{
   render(){
     return(
       <div className="header">
-          <div className="header_title"/>
+      <LogIn/>
+          <div className="header_title">
           <h1 className="title">Cloudveil Heli</h1>
           <img className="mainLogo" src={mainLogo}/>
+          </div>
       </div>
     )
   }

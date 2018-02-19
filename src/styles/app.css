@@ -14,7 +14,7 @@ html {
   width: 100%;
   display: flex;
   background-color: #E0E0E0;
-  justify-content: flex-end; }
+  justify-content: space-between; }
   @media (max-width: 850px) {
     .header {
       height: 3em; } }
@@ -27,11 +27,7 @@ html {
 
 .header_title {
   display: flex;
-  justify-content: space-between;
-  margin-right: -4em; }
-  @media (min-width: 850px) and (max-width: 1024px) {
-    .header_title {
-      margin-right: -3em; } }
+  justify-content: space-between; }
 
 .title {
   font-family: Main;
@@ -79,13 +75,18 @@ html {
 
 .loginPage {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; }
+  flex: 1;
+  height: 7em;
+  flex-direction: column; }
 
 .loginFields {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: nowrap; }
+
+.inputfield {
+  background-color: white; }
 
 .userButton {
   display: flex;
@@ -110,5 +111,17 @@ html {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end; }
+
+.PicDisplay {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  border: 10px solid red;
+  overflow: scroll; }
+
+.Display {
+  border: 10px solid black;
+  width: 20em;
+  height: 20em; }
 
 /*# sourceMappingURL=app.css.map */

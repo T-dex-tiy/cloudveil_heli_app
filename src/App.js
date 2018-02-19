@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Rebase from 're-base';
 import firebase, {auth} from './firebase/firebase'
+import LogIn from './routes/logIn'
 import './styles/app.css';
 import{EventEmitter} from 'events';
 import Calendar from './calendar/datePicker';
@@ -16,10 +17,10 @@ class App extends Component {
   constructor(props) {
   super(props);
   this.state = {
-    staging: {},
+    production: {},
     page:null,
     user:false,
-    uid:''
+    uid:'',
   };
   this.logOut = this.logOut.bind(this);
 }
@@ -27,10 +28,20 @@ class App extends Component {
 
 
 componentDidMount() {
+  if(this.state.user!="testgroup1@cloudveil.com"){base.syncState(`production`, {
+    context: this,
+    state: 'production'
+  });}
+  else{
   base.syncState(`staging`, {
     context: this,
-    state: 'staging'
-  });
+    state: 'production'
+  });}
+  const email=localStorage.getItem('email');
+  const uid=localStorage.getItem('uid');
+  this.setState({user:email})
+  this.setState({uid:uid})
+
 }
 
 componentWillUnmount() {
@@ -42,15 +53,18 @@ componentWillMount(){
    this.eventEmitter.addListener("landingPage",({page}) => {
       this.userScreen({newLandingPage: page})
     });
+    this.setState({user:localStorage.email})
+    this.setState({uid:localStorage.uid})
     const email = localStorage.getItem('email');
     const uid= localStorage.getItem('uid');
-    console.log(email);
+    console.log(this.state.user);
 }
 
 
 logOut(){
   console.log("signed out!");
-  this.setState({user: !this.state.user })
+  this.setState({user: null })
+  this.setState({uid: null })
   firebase.auth().signOut();
   localStorage.removeItem('email');
   localStorage.removeItem('uid');
@@ -59,6 +73,8 @@ logOut(){
 }
 userScreen({newLandingPage}){
   this.setState({page: newLandingPage})
+  this.setState({user:localStorage.email})
+  this.setState({uid:localStorage.uid})
   console.log(newLandingPage);
   console.log(localStorage.email);
 }
@@ -71,10 +87,10 @@ userScreen({newLandingPage}){
       console.log("Calendar page")
     }
     if(this.state.page===2){
-      userPage= <Pics dates={Object.keys(this.state.staging.days).map(key=>{return key})}
-                picture={this.state.staging.images}/>
-      console.log("Pics page")
-    }
+      userPage= <Pics dates={Object.keys(this.state.production.days).map(key=>{return key})}
+                picture={this.state.production.images} videos={this.state.production.videos}/>
+      console.log("Pics page")}
+
     return (
       <div className="App">
         <div>
