@@ -9,28 +9,27 @@ import{ withRouter } from 'react-router-dom'
 class logIn extends Component{
   constructor(props){
     super(props)
+    this.logInfo=this.logInfo.bind(this)
   }
 
-
-
-renderLogin(){
+logInfo(){
   const pass= this.refs.pass.value;
   const email= this.refs.email.value;
-  const promise = auth.signInWithEmailAndPassword(email, pass);
-  promise.then(snapshot=>{
-    let logInSucess="Logging in...";
-    const userName="Welcome back";
-    console.log("Yer in")
+  const userdata= {email, pass}
+  this.props.renderLogin(userdata)
 
-    localStorage.setItem('email', snapshot.email);
-    localStorage.setItem('uid', snapshot.uid);
-  })
+}
 
-          .catch(error=>{
-            let failStatus="Email/Password is incorrect. Please try again";
-            console.log(error.code,"Not today buddy")
-            }
-          )
+
+logOut(){
+  console.log("signed out!");
+  this.setState({user: null })
+  this.setState({uid: null })
+  firebase.auth().signOut();
+  localStorage.removeItem('email');
+  localStorage.removeItem('uid');
+  localStorage.removeItem('access_token');
+  localStorage.removeItem('id_token');
 }
 
 
@@ -40,7 +39,7 @@ renderLogin(){
       <div className="loginPage">
         <div className="loginFields"><input className="inputfield" type="text" ref="email" placeholder="Email"/>
         <input className="inputfield" type="password" ref="pass" placeholder="Password"/></div>
-        <div><button onClick={()=>this.renderLogin('email', 'pass')}>Click to Enter</button></div>
+        <div><button onClick={()=>this.logInfo('email', 'pass')}>Click to Enter</button></div>
         </div>
     )
   }

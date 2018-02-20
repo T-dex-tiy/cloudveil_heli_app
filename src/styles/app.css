@@ -77,7 +77,9 @@ html {
   display: flex;
   flex: 1;
   height: 7em;
-  flex-direction: column; }
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 1em; }
 
 .loginFields {
   display: flex;

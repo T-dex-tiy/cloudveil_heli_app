@@ -23,6 +23,7 @@ class App extends Component {
     uid:'',
   };
   this.logOut = this.logOut.bind(this);
+  this.renderLogin= this.renderLogin.bind(this)
 }
 
 
@@ -53,13 +54,28 @@ componentWillMount(){
    this.eventEmitter.addListener("landingPage",({page}) => {
       this.userScreen({newLandingPage: page})
     });
-    this.setState({user:localStorage.email})
-    this.setState({uid:localStorage.uid})
-    const email = localStorage.getItem('email');
-    const uid= localStorage.getItem('uid');
-    console.log(this.state.user);
 }
 
+renderLogin(logInfo){
+  const email= logInfo.email;
+  const pass= logInfo.pass;
+  const promise = auth.signInWithEmailAndPassword(email, pass);
+  promise.then(snapshot=>{
+    let logInSucess="Logging in...";
+    const userName="Welcome back";
+    console.log("Yer in")
+    this.setState({user:snapshot.email})
+    this.setState({uid:snapshot.uid})
+    localStorage.setItem('email', snapshot.email);
+    localStorage.setItem('uid', snapshot.uid);
+  })
+
+    .catch(error=>{
+        let failStatus="Email/Password is incorrect. Please try again";
+        console.log(error.code,"Not today buddy")
+        }
+          )
+}
 
 logOut(){
   console.log("signed out!");
@@ -75,7 +91,6 @@ userScreen({newLandingPage}){
   this.setState({page: newLandingPage})
   this.setState({user:localStorage.email})
   this.setState({uid:localStorage.uid})
-  console.log(newLandingPage);
   console.log(localStorage.email);
 }
 
@@ -94,7 +109,7 @@ userScreen({newLandingPage}){
     return (
       <div className="App">
         <div>
-          <Header user={this.state.user} />
+          <Header user={this.state.user} renderLogin={this.renderLogin.bind(this)} />
           <div className="userButton">
             <button className="userLogIn" onClick={this.logOut}>Log Out</button>
           </div>
