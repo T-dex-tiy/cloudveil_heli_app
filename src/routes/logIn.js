@@ -17,7 +17,7 @@ logInfo(){
   const email= this.refs.email.value;
   const userdata= {email, pass}
   this.props.renderLogin(userdata)
-
+  console.log(this.props.user, this.props.uid);
 }
 
 
@@ -35,13 +35,22 @@ logOut(){
 
 
   render(){
-    return(
+  if(this.props.user=== null){
+      return(
       <div className="loginPage">
         <div className="loginFields"><input className="inputfield" type="text" ref="email" placeholder="Email"/>
         <input className="inputfield" type="password" ref="pass" placeholder="Password"/></div>
         <div><button onClick={()=>this.logInfo('email', 'pass')}>Click to Enter</button></div>
         </div>
+    );
+  }
+  else{
+    return(
+      <div>
+      Welcome back {this.props.user}
+      </div>
     )
+  }
   }
 }
  export default withRouter(logIn);

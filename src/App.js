@@ -109,7 +109,7 @@ userScreen({newLandingPage}){
     return (
       <div className="App">
         <div>
-          <Header user={this.state.user} renderLogin={this.renderLogin.bind(this)} />
+          <Header user={this.state.user} uid={this.state.uid} renderLogin={this.renderLogin.bind(this)} />
           <div className="userButton">
             <button className="userLogIn" onClick={this.logOut}>Log Out</button>
           </div>
