@@ -15,7 +15,10 @@ class Header extends Component{
   render(){
     return(
       <div className="header">
-      <LogIn user={this.props.user} uid={this.props.uid} renderLogin={this.props.renderLogin.bind(this)}/>
+      <LogIn user={this.props.user}
+       uid={this.props.uid}
+       renderLogin={this.props.renderLogin.bind(this)}
+       logOut={this.props.logOut.bind(this)}/>
           <div className="header_title">
           <h1 className="title">Cloudveil Heli</h1>
           <img className="mainLogo" src={mainLogo}/>

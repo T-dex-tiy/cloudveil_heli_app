@@ -77,8 +77,9 @@ renderLogin(logInfo){
           )
 }
 
-logOut(){
+logOut(pageLogout){
   console.log("signed out!");
+  console.log(pageLogout);
   this.setState({user: null })
   this.setState({uid: null })
   firebase.auth().signOut();
@@ -109,7 +110,7 @@ userScreen({newLandingPage}){
     return (
       <div className="App">
         <div>
-          <Header user={this.state.user} uid={this.state.uid} renderLogin={this.renderLogin.bind(this)} />
+          <Header user={this.state.user} uid={this.state.uid} renderLogin={this.renderLogin.bind(this)} logOut={this.logOut.bind(this)}/>
           <div className="userButton">
             <button className="userLogIn" onClick={this.logOut}>Log Out</button>
           </div>

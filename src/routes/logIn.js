@@ -10,6 +10,7 @@ class logIn extends Component{
   constructor(props){
     super(props)
     this.logInfo=this.logInfo.bind(this)
+    this.pageLogout=this.pageLogout.bind(this);
   }
 
 logInfo(){
@@ -21,10 +22,12 @@ logInfo(){
 }
 
 
-logOut(){
+pageLogout(){
   console.log("signed out!");
-  this.setState({user: null })
-  this.setState({uid: null })
+  const email= null;
+  const uid=null;
+  const userData= {email, uid}
+  this.props.logOut(userData)
   firebase.auth().signOut();
   localStorage.removeItem('email');
   localStorage.removeItem('uid');
@@ -48,6 +51,9 @@ logOut(){
     return(
       <div>
       Welcome back {this.props.user}
+      <div>
+      <button onClick={()=>this.pageLogout()}>Log Out</button>
+      </div>
       </div>
     )
   }
