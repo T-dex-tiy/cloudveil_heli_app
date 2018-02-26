@@ -14,12 +14,16 @@ class PicBox extends Component{
       newDis[key]=url[key]
       return newDis[key].url
     })
-    const date= Object.keys(this.props.dates).map(key=>[key])
-    console.log(date, urltest);
+    // const date= Object.keys(this.props.dates).reduce(function(total, current){
+    //   total[current.key]=current.value
+    //   console.log(total);
+    //
+    // })
+    // const head=date.map(key=>key);
     return(
-        <div>
+        <div className="BrianBoitano">
           {Object.keys(picAdd).map(key=>{
-          return <div><h2>{date}</h2><img className="Display" key={key} src={picAdd[key]} alt={picAdd[key].url}/></div>
+          return <div><img className="Display" key={key} src={picAdd[key]} alt={picAdd[key].url}/></div>
         })}
         </div>
     )

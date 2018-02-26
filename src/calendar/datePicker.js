@@ -18,6 +18,7 @@ onChange(e) {
 }
 
   render(){
+    console.log(this.props.users);
     return(
       <div>
       <CalendarPicker

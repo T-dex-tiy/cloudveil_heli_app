@@ -8,12 +8,12 @@ class PicDisplay extends Component{
 
   render(){
     const picsDis=Object.keys(this.props.src).map(key=>this.props.src[key]);
-
+    console.log(Object.keys(this.props.src), picsDis);
     return(
       <div>
         <div>
           {Object.keys(picsDis).map(keys=>{
-            return <PicBox key={keys} src={picsDis[keys]} dates={this.props.src}/>
+            return <PicBox className="BrianBoitano" key={keys} src={picsDis[keys]} dates={this.props.src}/>
           })}
         </div>
       </div>

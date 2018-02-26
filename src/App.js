@@ -21,6 +21,7 @@ class App extends Component {
     page:null,
     user:false,
     uid:'',
+    remainingdays:'',
   };
   this.logOut = this.logOut.bind(this);
   this.renderLogin= this.renderLogin.bind(this)
@@ -29,12 +30,12 @@ class App extends Component {
 
 
 componentDidMount() {
-  if(this.state.user!="testgroup1@cloudveil.com"){base.syncState(`production`, {
+  if(this.state.user!="testgroup1@cloudveil.com"){base.syncState(`staging`, {
     context: this,
     state: 'production'
   });}
   else{
-  base.syncState(`staging`, {
+  base.syncState(`production`, {
     context: this,
     state: 'production'
   });}
@@ -42,7 +43,6 @@ componentDidMount() {
   const uid=localStorage.getItem('uid');
   this.setState({user:email})
   this.setState({uid:uid})
-
 }
 
 componentWillUnmount() {
@@ -97,9 +97,13 @@ userScreen({newLandingPage}){
 
 
   render() {
+    console.log(this.state.remainingdays);
     var userPage
     if(this.state.page===1){
-      userPage= <Calendar/>
+      userPage= <Calendar users={Object.keys(this.state.production.users).map(key=>{
+        if(this.state.uid===this.state.production.users[key].uid){
+          return this.state.production.users[key]
+        }})} />
       console.log("Calendar page")
     }
     if(this.state.page===2){
@@ -111,9 +115,6 @@ userScreen({newLandingPage}){
       <div className="App">
         <div>
           <Header user={this.state.user} uid={this.state.uid} renderLogin={this.renderLogin.bind(this)} logOut={this.logOut.bind(this)}/>
-          <div className="userButton">
-            <button className="userLogIn" onClick={this.logOut}>Log Out</button>
-          </div>
           <NavBar eventEmitter={this.eventEmitter}
           landingPage={this.state.page}/>
         </div>
