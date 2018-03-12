@@ -8,6 +8,7 @@ import Calendar from './calendar/datePicker';
 import Header from './header';
 import Pics from './customerPics/pictures';
 import NavBar from './navComponents';
+import Weather from './weather.js/weather'
 import { withRouter } from 'react-router-dom'
 
 
@@ -121,6 +122,7 @@ userScreen({newLandingPage}){
         <div className="mainArea">
         {userPage}
         </div>
+        <Weather/>
       </div>
     );
   }

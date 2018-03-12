@@ -5,15 +5,15 @@ class Calendar extends Component{
   constructor(props){
     super(props);
     this.state = {
-      date: new Date(),
+      date:null,
     };
   }
 onChange(e) {
   let newDate = val;
   const val = e;
   newDate = val;
-  console.log(val);
-
+  console.log(val, newDate);
+  console.log(this.state.date);
   // this.setState({ date: newDate })
 }
 
@@ -21,6 +21,7 @@ onChange(e) {
     console.log(this.props.users);
     return(
       <div>
+      <h1>{this.state.date}</h1>
       <CalendarPicker
                 onChange={this.onChange}
                 value={this.state.date}
