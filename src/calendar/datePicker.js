@@ -22,25 +22,26 @@ onChange(e) {
     return(
       <div className="selectionpage">
       <div className="selection">
-        <ul className="operatingArea">
-          <li className="options">Operating Area</li>
-          <ul className="pickupArea menu-1">
+      <nav id="main">
+        <ul>
+          <li>Operating Area</li>
+          <ul className="drop-menu menu-1">
               <li>North Operation Area</li>
               <li>Central Operation Area</li>
               <li>South Operation Area</li>
           </ul>
         </ul>
-        <ul className="operatingArea">
-          <li className="options">Pickup Location</li>
-          <ul className="pickupArea menu-1">
+        <ul>
+          <li>Pickup Location</li>
+          <ul className="drop-menu menu-1">
               <li>Heber Hanger</li>
               <li>North Salt Lake Hanger</li>
               <li>Other</li>
           </ul>
         </ul>
-        <ul className="operatingArea">
-          <li className="options">Pickup Time</li>
-          <ul className="pickupArea menu-1">
+        <ul>
+          <li>Pickup Time</li>
+          <ul className="drop-menu menu-1">
               <li>AM Slot</li>
               <li>PM Slot</li>
           </ul>
@@ -58,6 +59,7 @@ onChange(e) {
             <li>8</li>
           </ul>
         </ul>
+      </nav>
       </div>
       <CalendarPicker
                 onChange={this.onChange}

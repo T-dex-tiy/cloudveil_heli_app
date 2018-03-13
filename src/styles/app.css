@@ -148,7 +148,7 @@ html {
     width: 100%;
     padding-left: 3px; }
 
-.operatingArea {
+nav {
   display: inline-flex;
   padding: 0px;
   text-align: center;
@@ -180,70 +180,71 @@ ul > li:hover {
   background: #d5d5d5;
   border-radius: 5px; }
 
-ul.pickupArea {
+ul.drop-menu {
   position: absolute;
+  top: 100%;
   left: 0%;
   width: 100%;
   padding: 0; }
 
-ul.pickupArea li {
+ul.drop-menu li {
   background: #666;
   color: rgba(255, 255, 255, 0.7); }
 
-ul.pickupArea li:hover {
+ul.drop-menu li:hover {
   background: #606060; }
 
-ul.pickupArea li:last-child {
+ul.drop-menu li:last-child {
   border-radius: 0px 0px 5px 5px; }
 
-ul.pickupArea li {
+ul.drop-menu li {
   display: none; }
 
-li:hover > ul.pickupArea li {
+li:hover > ul.drop-menu li {
   display: block; }
 
-li:hover > ul.pickupArea.menu-1 {
+li:hover > ul.drop-menu.menu-1 {
   perspective: 1000px; }
 
-li:hover > ul.pickupArea.menu-1 li {
+li:hover > ul.drop-menu.menu-1 li {
   opacity: 0; }
 
-li:hover > ul.pickupArea.menu-1 li:nth-child(1) {
+li:hover > ul.drop-menu.menu-1 li:nth-child(1) {
   animation-name: menu1;
   animation-duration: 100ms;
   animation-delay: 0ms;
   animation-timing-function: linear;
   animation-fill-mode: forwards; }
 
-li:hover > ul.pickupArea.menu-1 li:nth-child(2) {
+li:hover > ul.drop-menu.menu-1 li:nth-child(2) {
   animation-name: menu1;
   animation-duration: 100ms;
   animation-delay: 100ms;
   animation-timing-function: linear;
   animation-fill-mode: forwards; }
 
-li:hover > ul.pickupArea.menu-1 li:nth-child(3) {
+li:hover > ul.drop-menu.menu-1 li:nth-child(3) {
   animation-name: menu1;
   animation-duration: 100ms;
   animation-delay: 200ms;
   animation-timing-function: linear;
   animation-fill-mode: forwards; }
 
-li:hover > ul.pickupArea.menu-1 li:nth-child(4) {
+li:hover > ul.drop-menu.menu-1 li:nth-child(4) {
   animation-name: menu1;
   animation-duration: 100ms;
   animation-delay: 300ms;
   animation-timing-function: linear;
   animation-fill-mode: forwards; }
 
-li:hover > ul.pickupArea.menu-1 li:nth-child(5) {
+li:hover > ul.drop-menu.menu-1 li:nth-child(5) {
   animation-name: menu1;
   animation-duration: 100ms;
   animation-delay: 400ms;
   animation-timing-function: linear;
   animation-fill-mode: forwards; }
 
-li:hover > ul.pickupArea.menu-1 li:nth-child(6) {
+li:hover > ul.drop-menu.menu-1 li:nth-child(6) {
   animation-name: menu1;
   animation-duration: 100ms;
   animation-delay: 500ms;
