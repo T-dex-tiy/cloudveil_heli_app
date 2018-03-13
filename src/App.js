@@ -36,7 +36,7 @@ componentDidMount() {
     state: 'production'
   });}
   else{
-  base.syncState(`production`, {
+    base.syncState(`production`, {
     context: this,
     state: 'production'
   });}
@@ -104,7 +104,7 @@ userScreen({newLandingPage}){
       userPage= <Calendar users={Object.keys(this.state.production.users).map(key=>{
         if(this.state.uid===this.state.production.users[key].uid){
           return this.state.production.users[key]
-        }})} />
+        }})} reservations={this.state.production.reservations} days={this.state.production.days} />
       console.log("Calendar page")
     }
     if(this.state.page===2){

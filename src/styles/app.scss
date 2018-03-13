@@ -4,6 +4,13 @@
   src:url('./fonts/cloudveil_font.otf');
 }
 
+//colors
+  //picton blue:#50AADF;
+  // platinum:#E0E0E0;
+  // tigers eyes:#D48C3C;
+  // dim grey:#6D6D6D;
+  // white:#FFFFFF;
+
 html{
   padding:0;
   margin:0;
@@ -132,9 +139,6 @@ html{
 
 .mainArea{
   display:flex;
-  flex-direction:row;
-  justify-content: flex-end;
-
 }
 
 .dropdownSelector{
@@ -157,4 +161,152 @@ html{
 
 .BrianBoitano{
   border: 15px solid blue;
+}
+
+//calendar
+.selectionpage{
+  display:flex;
+  width:100%;
+  flex-flow: row;
+  justify-content:space-between;
+}
+
+.operatingArea{
+  display:inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 3px;
+  .options{
+    align-self: flex-start;
+  }
+
+  li{
+    height:50px;
+    border:1px solid black;
+    list-style: none;
+    background:#6D6D6D;
+    width:100%;
+    padding-left: 3px;
+  }
+}
+
+.operatingArea {
+  display: inline-flex;
+  padding: 0px;
+  text-align: center;
+  width: 100%;
+}
+li {
+  border-right: 1px solid black;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  width: 100%;
+  background: #ddd;
+}
+ul > li {
+  display: inline-flex;
+  justify-content: center;
+  width: 150px;
+  height: 65px;
+  line-height: 65px;
+  position: relative;
+  text-transform: uppercase;
+  font-size: 14px;
+  cursor: pointer;
+}
+ul > li:hover {
+  background: #d5d5d5;
+  border-radius: 5px;
+}
+
+ul.pickupArea {
+  position: absolute;
+  left: 0%;
+  width: 100%;
+  padding: 0;
+}
+ul.pickupArea li {
+  background: #666;
+  color: rgba(255, 255, 255, 0.7);
+}
+ul.pickupArea li:hover {
+  background: #606060;
+}
+ul.pickupArea li:last-child {
+  border-radius: 0px 0px 5px 5px;
+}
+
+ul.pickupArea li {
+  display: none;
+}
+
+li:hover > ul.pickupArea li {
+  display: block;
+}
+
+li:hover > ul.pickupArea.menu-1 {
+  perspective: 1000px;
+}
+li:hover > ul.pickupArea.menu-1 li {
+  opacity: 0;
+}
+li:hover > ul.pickupArea.menu-1 li:nth-child(1) {
+  animation-name: menu1;
+  animation-duration: 100ms;
+  animation-delay: 0ms;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+li:hover > ul.pickupArea.menu-1 li:nth-child(2) {
+  animation-name: menu1;
+  animation-duration: 100ms;
+  animation-delay: 100ms;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+li:hover > ul.pickupArea.menu-1 li:nth-child(3) {
+  animation-name: menu1;
+  animation-duration: 100ms;
+  animation-delay: 200ms;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+li:hover > ul.pickupArea.menu-1 li:nth-child(4) {
+  animation-name: menu1;
+  animation-duration: 100ms;
+  animation-delay: 300ms;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+li:hover > ul.pickupArea.menu-1 li:nth-child(5) {
+  animation-name: menu1;
+  animation-duration: 100ms;
+  animation-delay: 400ms;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+li:hover > ul.pickupArea.menu-1 li:nth-child(6) {
+  animation-name: menu1;
+  animation-duration: 100ms;
+  animation-delay: 500ms;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+/*Animation calls*/
+@keyframes menu1 {
+  0% {
+    opacity: 0;
+    transform: rotateX(-90deg);
+    transform-origin: top;
+  }
+  100% {
+    opacity: 1;
+    transform: rotateX(0deg);
+    transform-origin: top;
+  }
 }

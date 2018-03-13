@@ -20,8 +20,45 @@ onChange(e) {
   render(){
     console.log(this.props.users);
     return(
-      <div>
-      <h1>{this.state.date}</h1>
+      <div className="selectionpage">
+      <div className="selection">
+        <ul className="operatingArea">
+          <li className="options">Operating Area</li>
+          <ul className="pickupArea menu-1">
+              <li>North Operation Area</li>
+              <li>Central Operation Area</li>
+              <li>South Operation Area</li>
+          </ul>
+        </ul>
+        <ul className="operatingArea">
+          <li className="options">Pickup Location</li>
+          <ul className="pickupArea menu-1">
+              <li>Heber Hanger</li>
+              <li>North Salt Lake Hanger</li>
+              <li>Other</li>
+          </ul>
+        </ul>
+        <ul className="operatingArea">
+          <li className="options">Pickup Time</li>
+          <ul className="pickupArea menu-1">
+              <li>AM Slot</li>
+              <li>PM Slot</li>
+          </ul>
+        </ul>
+        <ul className="operatingArea">
+          <li className="options">Group Size</li>
+          <ul className="pickupArea menu-1">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+          </ul>
+        </ul>
+      </div>
       <CalendarPicker
                 onChange={this.onChange}
                 value={this.state.date}
