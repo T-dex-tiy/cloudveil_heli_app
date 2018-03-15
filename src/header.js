@@ -1,21 +1,16 @@
 import React, { Component } from 'react';
 import mainLogo from './styles/logos/mainlogo2.png';
-import firebase, {auth} from './firebase/firebase.js';
+
 import LogIn from './routes/logIn'
 import './styles/app.css';
 
 
 class Header extends Component{
-  constructor(props){
-    super(props)
-
-
-  }
 
   render(){
     return(
       <div className="header">
-      <LogIn user={this.props.user}
+      <LogIn className="userName" user={this.props.user}
        uid={this.props.uid}
        renderLogin={this.props.renderLogin.bind(this)}
        logOut={this.props.logOut.bind(this)}/>
