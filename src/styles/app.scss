@@ -1,209 +1,211 @@
 //Fonts
-@font-face{
-  font-family:Main;
-  src:url('./fonts/cloudveil_font.otf');
+@font-face {
+  font-family: Main;
+  src: url('./fonts/cloudveil_font.otf');
 }
 
 //colors
-  //picton blue:#50AADF;
-  // platinum:#E0E0E0;
-  // tigers eyes:#D48C3C;
-  // dim grey:#6D6D6D;
-  // white:#FFFFFF;
+//picton blue:#50AADF;
+// platinum:#E0E0E0;
+// tigers eyes:#D48C3C;
+// dim grey:#6D6D6D;
+// white:#FFFFFF;
 
-html{
-  padding:0;
-  margin:0;
+html {
+  padding: 0;
+  margin: 0;
   width: 100%;
-  @media (max-width:850px) {
+  @media (max-width: 850px) {
     background-color: blue;
   }
 }
 
-
 // Head title
-.header{
-  height:7em;
-  width:100%;
-  display:flex;
-  background-color: #E0E0E0;
+.header {
+  height: 7em;
+  width: 100%;
+  display: flex;
+  background-color: #e0e0e0;
   justify-content: space-between;
   font-family: Main;
 
   // Phone display
-  @media (max-width:850px) {
-    height:3em;
+  @media (max-width: 850px) {
+    height: 3em;
   }
   //tablet break point
-  @media (min-width:850px) and (max-width: 1024px){
-    padding-right: .1em;
-    margin-right: .1em;
+  @media (min-width: 850px) and (max-width: 1024px) {
+    padding-right: 0.1em;
+    margin-right: 0.1em;
     height: 4em;
   }
-
 }
-.header_title{
-  display:flex;
+.header_title {
+  display: flex;
   justify-content: space-between;
   //tablet break point
-  @media (min-width:850px) and (max-width: 1024px) {
+  @media (min-width: 850px) and (max-width: 1024px) {
   }
 }
-.title{
-  font-family:Main;
-  font-size:2em;
-  padding-right:.25em;
-  margin-right: .25em;
-//Phone break point
-  @media (max-width:850px) {
-    font-size:.75em;
-    padding-right: .1em;
-    margin-right: .1em;
+.title {
+  font-family: Main;
+  font-size: 2em;
+  padding-right: 0.25em;
+  margin-right: 0.25em;
+  //Phone break point
+  @media (max-width: 850px) {
+    font-size: 0.75em;
+    padding-right: 0.1em;
+    margin-right: 0.1em;
   }
   //tablet break point
-  @media (min-width:850px) and (max-width: 1024px) {
-    font-size:.75em;
-    padding-right: .1em;
-    margin-right: .1em;
+  @media (min-width: 850px) and (max-width: 1024px) {
+    font-size: 0.75em;
+    padding-right: 0.1em;
+    margin-right: 0.1em;
   }
 }
-.mainLogo{
-  height:3em;
-  width:4em;
+.mainLogo {
+  height: 3em;
+  width: 4em;
   // padding-right: 1em;
 
   //phone break point
-  @media (max-width:950px) {
-    height:.75em;
-    width:1em;
+  @media (max-width: 950px) {
+    height: 0.75em;
+    width: 1em;
   }
 
   //tablet break point
-  @media (min-width:750px) and (max-width: 1240px) {
-    height:2em;
-    width:3em;
-    padding-right:1em
+  @media (min-width: 750px) and (max-width: 1240px) {
+    height: 2em;
+    width: 3em;
+    padding-right: 1em;
   }
 }
 //header and Nav Bar
-.top-bar{
-  display:flex;
+.top-bar {
+  display: flex;
   flex-direction: row;
   justify-content: space-around;
-  background-color:#50AADF;
-  .navigation{
+  background-color: #50aadf;
+  .navigation {
     display: flex;
-    cursor:pointer;
+    cursor: pointer;
     justify-content: center;
-    border:.25em solid black;
+    border: 0.25em solid black;
     width: 100%;
     margin: 0;
-    padding:0;
-    font-size:1em;
+    padding: 0;
+    font-size: 1em;
   }
 }
 //Login Page
-.loginPage{
-  display:flex;
-  flex:1;
+.loginPage {
+  display: flex;
+  flex: 1;
   height: 7em;
-  flex-direction:column;
+  flex-direction: column;
   justify-content: center;
   margin-left: 1em;
+  @media (max-width: 850px) {
+    height: 3em;
+  }
 }
-.loginFields{
-  display:flex;
+.loginFields {
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
   flex-wrap: nowrap;
+  @media (max-width: 850px) {
+    flex-direction: row;
+  }
 }
-.inputfield{
+.inputfield {
   background-color: white;
 }
 
-.userButton{
+.userButton {
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
   align-self: flex-end;
-  .userLogIn{
-  align-self:baseline;
-  justify-content:flex-end;
-  align-content: flex-end;
-  margin-right:2em;
-  margin-bottom:.5em;
-  background-color: black;
-  color:white;
+  .userLogIn {
+    align-self: baseline;
+    justify-content: flex-end;
+    align-content: flex-end;
+    margin-right: 2em;
+    margin-bottom: 0.5em;
+    background-color: black;
+    color: white;
   }
 }
 //main area
 
-.mainArea{
-  display:flex;
+.mainArea {
+  display: flex;
 }
 
-.dropdownSelector{
+.dropdownSelector {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
 }
 
-.PicDisplay{
-  display:flex;
+.PicDisplay {
+  display: flex;
   width: 100vw;
   height: 100vh;
   overflow: scroll;
 }
-.Display{
-  border:10px solid black;
-  width:20em;
-  height:20em;
+.Display {
+  border: 10px solid black;
+  width: 20em;
+  height: 20em;
 }
 
-.BrianBoitano{
+.BrianBoitano {
   border: 15px solid blue;
 }
 
 //calendar
-.selectionpage{
-  display:flex;
-  width:100%;
+.selectionpage {
+  display: flex;
+  width: 100%;
   flex-flow: row;
-  justify-content:space-between;
+  justify-content: space-between;
 }
 
-.operatingArea{
-  display:inline-flex;
+.operatingArea {
+  display: inline-flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding-left: 3px;
-  .options{
+  .options {
     align-self: flex-start;
   }
 
-
-  li{
-    height:50px;
-    border:1px solid black;
+  li {
+    height: 50px;
+    border: 1px solid black;
     list-style: none;
-    background:#6D6D6D;
-    width:100%;
+    background: #6d6d6d;
+    width: 100%;
     padding-left: 3px;
   }
 }
-.selection{
-  display:flex;
+.selection {
+  display: flex;
   flex-direction: row;
   height: 28%;
-
 }
-.dropdownMenu{
-  display:flex;
+.dropdownMenu {
+  display: flex;
 }
 
-.people li{
-  height:35px;
+.people li {
+  height: 35px;
 }
 
 li {
@@ -230,7 +232,6 @@ ul > li {
   text-transform: uppercase;
   font-size: 12px;
   cursor: pointer;
-
 }
 ul > li:hover {
   background: #d5d5d5;
