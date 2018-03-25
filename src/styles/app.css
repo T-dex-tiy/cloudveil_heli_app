@@ -119,9 +119,8 @@ html {
   align-items: flex-end; }
 
 .PicDisplay {
-  display: flex;
-  width: 100vw;
-  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   overflow: scroll; }
 
 .Display {
