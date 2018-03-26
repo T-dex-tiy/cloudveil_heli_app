@@ -108,8 +108,10 @@ html {
   flex-direction: column;
   justify-content: center;
   margin-left: 1em;
+  margin-top: -1.25em;
   @media (max-width: 850px) {
     height: 3em;
+    margin-top: 0;
   }
 }
 .loginFields {
@@ -144,6 +146,7 @@ html {
 
 .mainArea {
   display: flex;
+  overflow: scroll;
 }
 
 .dropdownSelector {

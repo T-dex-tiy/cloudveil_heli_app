@@ -1,23 +1,30 @@
 import React, { Component } from 'react';
-import PicBox from './pictureBox'
+import PicBox from './pictureBox';
 
-class PicDisplay extends Component{
-  constructor(props){
+class PicDisplay extends Component {
+  constructor(props) {
     super(props);
   }
 
-  render(){
-    const picsDis=Object.keys(this.props.src).map(key=>this.props.src[key]);
-    console.log(Object.keys(this.props.src), picsDis);
-    return(
+  render() {
+    const picsDis = Object.keys(this.props.src).map(key => this.props.src[key]);
+
+    return (
       <div>
         <div>
-          {Object.keys(picsDis).map(keys=>{
-            return <PicBox className="BrianBoitano" key={keys} src={picsDis[keys]} dates={this.props.src}/>
+          {Object.keys(picsDis).map(keys => {
+            return (
+              <PicBox
+                className="BrianBoitano"
+                key={keys}
+                src={picsDis[keys]}
+                dates={Object.keys(this.props.src)}
+              />
+            );
           })}
         </div>
       </div>
-    )
+    );
   }
 }
 export default PicDisplay;
