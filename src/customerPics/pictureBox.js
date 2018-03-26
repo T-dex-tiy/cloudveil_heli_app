@@ -20,7 +20,7 @@ class PicBox extends Component {
         {Object.keys(picAdd, url).map(key => {
           return (
             <div>
-              <h3>{this.props.dates[key]}</h3>
+              <h3 className="font">{this.props.dates[key]}</h3>
               <img
                 className="Display"
                 key={key}

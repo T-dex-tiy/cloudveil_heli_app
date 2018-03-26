@@ -4,6 +4,10 @@
   src: url('./fonts/cloudveil_font.otf');
 }
 
+.font {
+  font-family: Main;
+}
+
 //colors
 //picton blue:#50AADF;
 // platinum:#E0E0E0;
@@ -27,7 +31,6 @@ html {
   display: flex;
   background-color: #e0e0e0;
   justify-content: space-between;
-  font-family: Main;
 
   // Phone display
   @media (max-width: 850px) {
@@ -48,7 +51,6 @@ html {
   }
 }
 .title {
-  font-family: Main;
   font-size: 2em;
   padding-right: 0.25em;
   margin-right: 0.25em;
@@ -147,6 +149,8 @@ html {
 .mainArea {
   display: flex;
   overflow: scroll;
+  padding: 5px;
+  margin: 5px;
 }
 
 .dropdownSelector {
@@ -158,6 +162,7 @@ html {
 .PicDisplay {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
   // width: 100vw;
   // height: 100vh;
   overflow: scroll;
@@ -169,7 +174,6 @@ html {
 }
 
 .BrianBoitano {
-  border: 15px solid blue;
 }
 
 //calendar
