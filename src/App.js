@@ -95,6 +95,10 @@ class App extends Component {
     console.log(localStorage.email);
   }
 
+  newReservation(event){
+    console.log(event.target.value)
+  }
+
   render() {
     console.log(this.state.remainingdays);
     var userPage;
@@ -114,6 +118,7 @@ class App extends Component {
           })}
           reservations={this.state.production.reservations}
           days={this.state.production.days}
+          newReservation={this.newReservation.bind(this)}
         />
       );
       console.log('Calendar page');

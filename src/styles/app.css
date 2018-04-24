@@ -136,9 +136,11 @@ html {
   height: 20em; }
 
 .selectionpage {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  border: 1px solid red;
   width: 100%;
-  flex-flow: row;
   justify-content: space-between; }
 
 .operatingArea {
@@ -178,14 +180,14 @@ ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  width: 100%;
-  background: #ddd; }
+  width: 100%; }
 
 ul > li {
   display: inline-flex;
   justify-content: center;
   text-align: center;
   align-items: center;
+  background: #ddd;
   width: 150px;
   height: 65px;
   position: relative;
@@ -201,6 +203,10 @@ ul.drop-menu {
   position: absolute;
   width: 150px;
   padding: 0; }
+
+ul.drop-menu li:hover {
+  background: #666;
+  color: rgba(255, 255, 255, 0.7); }
 
 ul.drop-menu li:last-child {
   border-radius: 0px 0px 5px 5px; }
