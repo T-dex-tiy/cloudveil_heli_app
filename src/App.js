@@ -4,7 +4,7 @@ import firebase, { auth } from './firebase/firebase';
 import LogIn from './routes/logIn';
 import './styles/app.css';
 import { EventEmitter } from 'events';
-import Calendar from './calendar/datePicker';
+import ResPage from './calendar/datePicker';
 import Header from './header';
 import Pics from './customerPics/pictures';
 import NavBar from './navComponents';
@@ -12,6 +12,7 @@ import Weather from './weather.js/weather';
 import { withRouter } from 'react-router-dom';
 
 const base = Rebase.createClass(firebase.database());
+
 
 class App extends Component {
   constructor(props) {
@@ -95,8 +96,8 @@ class App extends Component {
     console.log(localStorage.email);
   }
 
-  newReservation(event){
-    console.log(event.target.value)
+  newReservation(Res){
+    console.log(Res.day, "top page")
   }
 
   render() {
@@ -110,7 +111,7 @@ class App extends Component {
       );
     } else if (this.state.page === 1 && this.state.user !== null) {
       userPage = (
-        <Calendar
+        <ResPage
           users={Object.keys(this.state.production.users).map(key => {
             if (this.state.uid === this.state.production.users[key].uid) {
               return this.state.production.users[key];

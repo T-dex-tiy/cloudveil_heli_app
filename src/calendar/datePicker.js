@@ -1,23 +1,31 @@
 import React, { Component } from 'react';
-import CalendarPicker from 'react-calendar';
-import Reservation from './reservations'
+import Reservation from './reservations';
+import Calendar from './calendar'
 
+const style={
+  position:'relative',
+  margin:'50px auto'
+}
 
-class Calendar extends Component{
+class ResPage extends Component{
   constructor(props){
     super(props);
     this.state = {
-      date:null,
+      date:"",
     };
     this.newRes=this.newRes.bind(this)
+    this.onChange=this.onChange.bind(this)
   }
-onChange(e) {
-  const val = e;
+onChange(event) {
+  console.log(this, "On Change");
+  console.log(this.getDate);;
+  const val = event;
   let newDate = val;
-  newDate = val;
-  console.log(val, newDate);
-  console.log(this.state.date);
-  // this.setState({ date: newDate })
+  this.setState({date:newDate})
+}
+
+getDate(event){
+  console.log(this.new);
 }
 
 newRes(event){
@@ -25,18 +33,26 @@ newRes(event){
     opsArea:this.refs.opsArea.value,
     hangarPickup:this.refs.hangarPickup.value,
     guest:this.refs.guest.value,
+    day:this.state.date
   }
-  console.log(Res);
+  this.props.newReservation(Res)
+}
+
+onClickYear(event){
+  const val= event;
+  console.log("Clicked Year: ", val)
 }
 
   render(){
     console.log(this.props.users);
-
+    console.log(this.props.reservations);
+    let day="";
+    console.log(day);
     return(
       <div className="selectionpage">
       <div className="selection">
         <select ref="opsArea">
-          <option value=""disable selected>Choose Your Operating Area</option>
+          <option value=""disable selected hidden>Choose Your Operating Area</option>
           <option value="North">North Operation Area</option>
           <option value="Central">Central Operation Area</option>
           <option value="South">South Operation Area</option>
@@ -44,7 +60,7 @@ newRes(event){
       </div>
       <div className="selection">
         <select ref="hangarPickup">
-          <option value=""disable selected>Choose Your Pick Up Location</option>
+          <option value=""disable selected hidden>Choose Your Pick Up Location</option>
           <option value="Heber">Heber Hanger</option>
           <option value="NSL">North Salt Lake Hanger</option>
           <option value="Other">Other</option>
@@ -52,7 +68,7 @@ newRes(event){
       </div>
       <div className="selection">
         <select ref="guest">
-          <option value=""disable selected>Choose the amount of Guest</option>
+          <option value=""disable selected hidden>Choose the amount of Guest</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -63,16 +79,17 @@ newRes(event){
           <option value="8">8</option>
         </select>
       </div>
-      <CalendarPicker
+      <Calendar style={style}
                 onChange={this.onChange}
-                value={this.state.date}
+                getDate={this.getDate}
+                onClickYear={this.onClickYear}
               />
       <div>
-        <div><button onClick={this.newRes}>Lets Fly!</button></div>
+        <div><button onClick={this.newRes} >Lets Fly!</button></div>
           <Reservation/>
       </div>
       </div>
     )
   }
 }
-export default Calendar;
+export default ResPage;
