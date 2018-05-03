@@ -19,9 +19,6 @@ html {
   padding: 0;
   margin: 0;
   width: 100%;
-  @media (max-width: 850px) {
-    background-color: blue;
-  }
 }
 
 // Head title
@@ -233,7 +230,7 @@ tr {
 }
 
 .calendar-container {
-    border: 2px solid skyblue;
+    border: 10px double #50AADF;
 }
 
 .calendar {
@@ -244,7 +241,7 @@ tr {
 }
 
 .calendar-header {
-    border-bottom: 1px dashed skyblue;
+    border-bottom: 1px dashed #50AADF;
     font-size: 1.6em;
 }
 
@@ -276,7 +273,7 @@ tr {
 }
 
 .current-day {
-    background-color: #4285f4;
+    background-color: #D48C3C;
     width: 28px;
     height: 28px;
     line-height: 28px;

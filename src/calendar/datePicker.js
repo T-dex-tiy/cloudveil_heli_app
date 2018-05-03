@@ -29,12 +29,19 @@ getDate(event){
 }
 
 newRes(event){
+  var pickUpLocation=this.refs.hangarPickup.value;
+  if(pickUpLocation=="Other"){
+    let pickUpZone=prompt("Enter Location for Pick up");
+    return pickUpZone
+  }
+  console.log(typeof(this.refs.hangarPickup.value));
   const Res={
     opsArea:this.refs.opsArea.value,
-    hangarPickup:this.refs.hangarPickup.value,
+    hangarPickup:pickUpLocation,
     guest:this.refs.guest.value,
     day:this.state.date
   }
+  console.log(Res.hangarPickup);
   this.props.newReservation(Res)
 }
 
@@ -52,7 +59,7 @@ onClickYear(event){
       <div className="selectionpage">
       <div className="selection">
         <select ref="opsArea">
-          <option value=""disable selected hidden>Choose Your Operating Area</option>
+          <option value=""disable="true" selected hidden>Choose Your Operating Area</option>
           <option value="North">North Operation Area</option>
           <option value="Central">Central Operation Area</option>
           <option value="South">South Operation Area</option>
@@ -60,7 +67,7 @@ onClickYear(event){
       </div>
       <div className="selection">
         <select ref="hangarPickup">
-          <option value=""disable selected hidden>Choose Your Pick Up Location</option>
+          <option value=""disable="true" selected hidden>Choose Your Pick Up Location</option>
           <option value="Heber">Heber Hanger</option>
           <option value="NSL">North Salt Lake Hanger</option>
           <option value="Other">Other</option>
@@ -68,18 +75,19 @@ onClickYear(event){
       </div>
       <div className="selection">
         <select ref="guest">
-          <option value=""disable selected hidden>Choose the amount of Guest</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
+          <option  value=""disable="true" selected hidden>Choose the amount of Guest</option>
+          <option  value="1">1</option>
+          <option  value="2">2</option>
+          <option  value="3">3</option>
+          <option  value="4">4</option>
+          <option  value="5">5</option>
+          <option  value="6">6</option>
+          <option  value="7">7</option>
+          <option  value="8">8</option>
         </select>
       </div>
       <Calendar style={style}
+                width="402px"
                 onChange={this.onChange}
                 getDate={this.getDate}
                 onClickYear={this.onClickYear}
