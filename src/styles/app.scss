@@ -9,11 +9,11 @@
 }
 
 //colors
-//picton blue:#50AADF;
-// platinum:#E0E0E0;
-// tigers eyes:#D48C3C;
-// dim grey:#6D6D6D;
-// white:#FFFFFF;
+$cloudveilBlue:#50AADF;
+$cloudveilplatinum:#E0E0E0;
+$cloudveilGold:#D48C3C;
+$cloudveilGrey:#6D6D6D;
+$cloudveilWhite:#FFFFFF;
 
 html {
   padding: 0;
@@ -26,7 +26,7 @@ html {
   height: 7em;
   width: 100%;
   display: flex;
-  background-color: #e0e0e0;
+  background-color: $cloudveilplatinum;
   justify-content: space-between;
 
   // Phone display
@@ -87,7 +87,7 @@ html {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  background-color: #50aadf;
+  background-color: $cloudveilBlue;
   .navigation {
     display: flex;
     cursor: pointer;
@@ -99,7 +99,7 @@ html {
     font-size: 1em;
   }
   .navigation:hover{
-    background-color: red;
+    background-color: $cloudveilGold;
   }
 }
 
@@ -164,8 +164,6 @@ html {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 20px;
-  // width: 100vw;
-  // height: 100vh;
   overflow: scroll;
 }
 .Display {
@@ -219,7 +217,7 @@ html {
   height: 35px;
 }
 
-///calendar
+///calendar build
 .calendar-container,
 .calendar,
 .calendar-header,
