@@ -14,6 +14,7 @@ $cloudveilplatinum:#E0E0E0;
 $cloudveilGold:#D48C3C;
 $cloudveilGrey:#6D6D6D;
 $cloudveilWhite:#FFFFFF;
+$cloudveilBlack:#000;
 
 html {
   padding: 0;
@@ -85,14 +86,16 @@ html {
 //header and Nav Bar
 .top-bar {
   display: flex;
+  height:50px;
   flex-direction: row;
   justify-content: space-around;
   background-color: $cloudveilBlue;
+
   .navigation {
     display: flex;
     cursor: pointer;
     justify-content: center;
-    border: 0.25em solid black;
+    align-items: center;
     width: 100%;
     margin: 0;
     padding: 0;
@@ -127,7 +130,7 @@ html {
   }
 }
 .inputfield {
-  background-color: white;
+  background-color: $cloudveilWhite;
 }
 
 .userButton {
@@ -141,8 +144,8 @@ html {
     align-content: flex-end;
     margin-right: 2em;
     margin-bottom: 0.5em;
-    background-color: black;
-    color: white;
+    background-color: $cloudveilBlack;
+    color: $cloudveilWhite;
   }
 }
 //main area
@@ -150,6 +153,7 @@ html {
 .mainArea {
   display: flex;
   overflow: scroll;
+  justify-content: center;
   padding: 5px;
   margin: 5px;
 }
@@ -167,7 +171,7 @@ html {
   overflow: scroll;
 }
 .Display {
-  border: 10px solid black;
+  border: 10px solid $cloudveilBlack;
   width: 20em;
   height: 20em;
 }
@@ -180,7 +184,6 @@ html {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap:10px;
-  border:1px solid red;
   width: 100%;
   justify-content: space-between;
 }
@@ -199,7 +202,7 @@ html {
     height: 50px;
     border: 1px solid black;
     list-style: none;
-    background: #6d6d6d;
+    background: $cloudveilGrey;
     width: 100%;
     padding-left: 3px;
   }
@@ -228,18 +231,18 @@ tr {
 }
 
 .calendar-container {
-    border: 10px double #50AADF;
+    border: 10px double $cloudveilBlue;
 }
 
 .calendar {
-    background-color: white;
+    background-color: $cloudveilWhite;
     border-spacing: 0;
     border-collapse: collapse;
     width: 100%;
 }
 
 .calendar-header {
-    border-bottom: 1px dashed #50AADF;
+    border-bottom: 1px dashed $cloudveilBlue;
     font-size: 1.6em;
 }
 
@@ -271,12 +274,12 @@ tr {
 }
 
 .current-day {
-    background-color: #D48C3C;
+    background-color: $cloudveilGold;
     width: 28px;
     height: 28px;
     line-height: 28px;
     border-radius: 2%;
-    color: white;
+    color: $cloudveilWhite;
 }
 .selected-day {
     background-color:yellow;

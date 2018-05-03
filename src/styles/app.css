@@ -58,6 +58,7 @@ html {
 
 .top-bar {
   display: flex;
+  height: 50px;
   flex-direction: row;
   justify-content: space-around;
   background-color: #50AADF; }
@@ -65,7 +66,7 @@ html {
     display: flex;
     cursor: pointer;
     justify-content: center;
-    border: 0.25em solid black;
+    align-items: center;
     width: 100%;
     margin: 0;
     padding: 0;
@@ -96,7 +97,7 @@ html {
       flex-direction: row; } }
 
 .inputfield {
-  background-color: white; }
+  background-color: #FFFFFF; }
 
 .userButton {
   display: flex;
@@ -109,12 +110,13 @@ html {
     align-content: flex-end;
     margin-right: 2em;
     margin-bottom: 0.5em;
-    background-color: black;
-    color: white; }
+    background-color: #000;
+    color: #FFFFFF; }
 
 .mainArea {
   display: flex;
   overflow: scroll;
+  justify-content: center;
   padding: 5px;
   margin: 5px; }
 
@@ -130,7 +132,7 @@ html {
   overflow: scroll; }
 
 .Display {
-  border: 10px solid black;
+  border: 10px solid #000;
   width: 20em;
   height: 20em; }
 
@@ -138,7 +140,6 @@ html {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 10px;
-  border: 1px solid red;
   width: 100%;
   justify-content: space-between; }
 
@@ -154,7 +155,7 @@ html {
     height: 50px;
     border: 1px solid black;
     list-style: none;
-    background: #6d6d6d;
+    background: #6D6D6D;
     width: 100%;
     padding-left: 3px; }
 
@@ -181,7 +182,7 @@ tr {
   border: 10px double #50AADF; }
 
 .calendar {
-  background-color: white;
+  background-color: #FFFFFF;
   border-spacing: 0;
   border-collapse: collapse;
   width: 100%; }
@@ -218,7 +219,7 @@ tr {
   height: 28px;
   line-height: 28px;
   border-radius: 2%;
-  color: white; }
+  color: #FFFFFF; }
 
 .selected-day {
   background-color: yellow;

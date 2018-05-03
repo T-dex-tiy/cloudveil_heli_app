@@ -463,10 +463,10 @@ readers do not read off random characters that represent icons */
 .fa-bity:before {
   content: "\f37a"; }
 
-.fa-black-tie:before {
+.fa-$cloudveilBlack-tie:before {
   content: "\f27e"; }
 
-.fa-blackberry:before {
+.fa-$cloudveilBlackberry:before {
   content: "\f37b"; }
 
 .fa-blind:before {
