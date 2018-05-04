@@ -79,8 +79,6 @@ class App extends Component {
   }
 
   logOut(pageLogout) {
-    console.log('signed out!');
-    console.log(pageLogout);
     this.setState({ user: null });
     this.setState({ uid: null });
     firebase.auth().signOut();
@@ -93,11 +91,10 @@ class App extends Component {
     this.setState({ page: newLandingPage });
     this.setState({ user: localStorage.email });
     this.setState({ uid: localStorage.uid });
-    console.log(localStorage.email);
   }
 
   newReservation(Res){
-    console.log(Res.day, "top page")
+    console.log(Res, "top page")
   }
 
   render() {

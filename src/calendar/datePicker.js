@@ -32,9 +32,18 @@ newRes(event){
   var pickUpLocation=this.refs.hangarPickup.value;
   if(pickUpLocation=="Other"){
     let pickUpZone=prompt("Enter Location for Pick up");
-    return pickUpZone
-  }
-  console.log(typeof(this.refs.hangarPickup.value));
+    pickUpLocation=pickUpZone;
+    const Res={
+      opsArea:this.refs.opsArea.value,
+      hangarPickup:pickUpLocation,
+      guest:this.refs.guest.value,
+      day:this.state.date
+    }
+    this.props.newReservation(Res)
+    console.log(pickUpZone, pickUpLocation);
+    return
+  }else{
+
   const Res={
     opsArea:this.refs.opsArea.value,
     hangarPickup:pickUpLocation,
@@ -43,7 +52,7 @@ newRes(event){
   }
   console.log(Res.hangarPickup);
   this.props.newReservation(Res)
-}
+}}
 
 onClickYear(event){
   const val= event;
