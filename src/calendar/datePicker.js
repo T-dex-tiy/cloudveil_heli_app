@@ -37,7 +37,8 @@ newRes(event){
       opsArea:this.refs.opsArea.value,
       hangarPickup:pickUpLocation,
       guest:this.refs.guest.value,
-      day:this.state.date
+      day:this.state.date,
+      time:this.refs.pickupTime.value
     }
     this.props.newReservation(Res)
     console.log(pickUpZone, pickUpLocation);
@@ -48,10 +49,12 @@ newRes(event){
     opsArea:this.refs.opsArea.value,
     hangarPickup:pickUpLocation,
     guest:this.refs.guest.value,
-    day:this.state.date
+    day:this.state.date,
+    time:this.refs.pickupTime.value
   }
   console.log(Res.hangarPickup);
-  this.props.newReservation(Res)
+  this.props.newReservation(Res);
+  alert("Get ready to Fly ")
 }}
 
 onClickYear(event){
@@ -67,32 +70,39 @@ onClickYear(event){
     return(
       <div className="selectionpage">
       <div className="selection">
-        <select ref="opsArea">
-          <option value=""disable="true" selected hidden>Choose Your Operating Area</option>
-          <option value="North">North Operation Area</option>
-          <option value="Central">Central Operation Area</option>
-          <option value="South">South Operation Area</option>
+        <select className="dropdownStyle"ref="opsArea">
+          <option className="dropdownStyle" value=""disable="true" selected hidden>Choose Your Operating Area</option>
+          <option className="dropdownStyle" value="North">North Operation Area</option>
+          <option className="dropdownStyle" value="Central">Central Operation Area</option>
+          <option className="dropdownStyle" value="South">South Operation Area</option>
         </select>
       </div>
       <div className="selection">
-        <select ref="hangarPickup">
-          <option value=""disable="true" selected hidden>Choose Your Pick Up Location</option>
-          <option value="Heber">Heber Hanger</option>
-          <option value="NSL">North Salt Lake Hanger</option>
-          <option value="Other">Other</option>
+        <select className="dropdownStyle"ref="hangarPickup">
+          <option className="dropdownStyle" value=""disable="true" selected hidden>Choose Your Pick Up Location</option>
+          <option className="dropdownStyle" value="Heber">Heber Hanger</option>
+          <option className="dropdownStyle" value="NSL">North Salt Lake Hanger</option>
+          <option className="dropdownStyle" value="Other">Other</option>
         </select>
       </div>
       <div className="selection">
-        <select ref="guest">
-          <option  value=""disable="true" selected hidden>Choose the amount of Guest</option>
-          <option  value="1">1</option>
-          <option  value="2">2</option>
-          <option  value="3">3</option>
-          <option  value="4">4</option>
-          <option  value="5">5</option>
-          <option  value="6">6</option>
-          <option  value="7">7</option>
-          <option  value="8">8</option>
+        <select className="dropdownStyle"ref="guest">
+          <option  className="dropdownStyle" value=""disable="true" selected hidden>Choose the amount of Guest</option>
+          <option  className="dropdownStyle" value="1">1</option>
+          <option  className="dropdownStyle" value="2">2</option>
+          <option  className="dropdownStyle" value="3">3</option>
+          <option  className="dropdownStyle" value="4">4</option>
+          <option  className="dropdownStyle" value="5">5</option>
+          <option  className="dropdownStyle" value="6">6</option>
+          <option  className="dropdownStyle" value="7">7</option>
+          <option  className="dropdownStyle" value="8">8</option>
+        </select>
+      </div>
+      <div className="selection">
+        <select className="dropdownStyle"ref="pickupTime">
+          <option disable="true" selected hidden>AM or PM</option>
+          <option value="AM">AM</option>
+          <option value="PM">PM</option>
         </select>
       </div>
       <Calendar style={style}

@@ -14,6 +14,7 @@ class Calendar extends Component{
     super(props);
     this.width= props.width || '350px';
     this.style=props.style || {};
+    this.style.width=this.width;
   }
 
   weekdays= moment.weekdays();
@@ -39,6 +40,36 @@ class Calendar extends Component{
     let dateContext=this.state.dateContext;
     let firstDay= moment(dateContext).startOf('month').format('d')
     return firstDay
+  }
+  SelectList=(props)=>{
+    let popup= props.data.map((data)=>{
+      return(
+        <div key={data}>
+          <a href="#">
+          {data}
+          </a>
+        </div>
+      )
+    })
+    return(
+      <div className="month-popup">
+        {popup}
+      </div>
+    )
+  }
+  onChangeMonth=(e, month)=>{
+    this.setState({
+      showMonthPopUp:!this.state.showMonthPopUp
+    })
+  }
+  MonthNav=()=>{
+    return(
+      <span className="label-month" onClick ={(e)=>{this.onChangeMonth(e,this.month())}}>
+        {this.month()}
+        {this.state.showMonthPopUp && <this.SelectList data={this.months}/>}
+
+      </span>
+    )
   }
 
   render(){
@@ -81,33 +112,6 @@ class Calendar extends Component{
       rows.push(newRow);
     }});
 
-    // var totalSlots = [...blanks, ...daysInMonth];
-    //    let rows = [];
-    //    let cells = [];
-    //
-    //    totalSlots.forEach((row, i) => {
-    //        if ((i % 7) !== 0) {
-    //            cells.push(row);
-    //        } else {
-    //            let insertRow = cells.slice();
-    //            rows.push(insertRow);
-    //            cells = [];
-    //            cells.push(row);
-    //        }
-    //        if (i === totalSlots.length - 1) {
-    //            let insertRow = cells.slice();
-    //            rows.push(insertRow);
-    //        }
-    //    });
-    //
-    //    let trElems = rows.map((d, i) => {
-    //        return (
-    //            <tr key={i*100}>
-    //                {d}
-    //            </tr>
-    //        );
-    //    })
-
 
     const calElements=rows.map((day,index)=>{
       return (
@@ -117,10 +121,13 @@ class Calendar extends Component{
     console.log(blanks);
     console.log(daysInMonth);
     return(
-      <div className="calendar-container">
+      <div className="calendar-container" style={this.style}>
         <table className="calendar">
           <thead>
             <tr className="calendar-header">
+              <td colSpan="5">
+                <this.MonthNav/>
+              </td>
             </tr>
           </thead>
           <tbody>

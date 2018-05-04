@@ -182,7 +182,7 @@ html {
 //calendar
 .selectionpage {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-gap:10px;
   width: 100%;
   justify-content: space-between;
@@ -212,6 +212,10 @@ html {
   flex-direction: row;
   height: 28%;
 }
+.dropdownStyle{
+  background:$cloudveilWhite;
+  font-family:Main;
+}
 .dropdownMenu {
   display: flex;
 }
@@ -226,6 +230,7 @@ html {
 .calendar-header,
 td,
 tr {
+    font-family: Main;
     padding: 0;
     margin: 0;
 }
@@ -282,7 +287,7 @@ tr {
     color: $cloudveilWhite;
 }
 .selected-day {
-    background-color:yellow;
+    background-color:green;
     width: 28px;
     height: 28px;
     line-height: 28px;
