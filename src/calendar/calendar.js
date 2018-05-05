@@ -154,8 +154,8 @@ class Calendar extends Component {
       </span>
     );
   };
-  onDayClick = (e, day) => {
-    this.props.onDayClick && this.props.onDayClick(e, day);
+  onDayClick = (e, reservationDate) => {
+    this.props.onDayClick && this.props.onDayClick(e, reservationDate);
   };
   render() {
     const weekdays = this.weekdaysShort.map(day => {
@@ -178,11 +178,12 @@ class Calendar extends Component {
     for (let day = 1; day <= this.daysInMonth(); day++) {
       let className = day == this.currentDay() ? "day current-day" : "day";
       let selectedClass = day == this.state.selectedDay ? " selected-day " : "";
+      let reservationDate = this.year() + " " + this.month() + day;
       daysInMonth.push(
         <td key={day} className={className + selectedClass}>
           <span
             onClick={e => {
-              this.onDayClick(e, day);
+              this.onDayClick(e, reservationDate);
             }}
           >
             {day}
@@ -213,8 +214,7 @@ class Calendar extends Component {
     const calElements = rows.map((day, index) => {
       return <tr key={index * 100}>{day}</tr>;
     });
-    console.log(blanks);
-    console.log(daysInMonth);
+
     return (
       <div className="calendar-container" style={this.style}>
         <table className="calendar">

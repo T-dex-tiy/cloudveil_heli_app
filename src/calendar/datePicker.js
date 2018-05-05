@@ -61,14 +61,15 @@ class ResPage extends Component {
     const val = event;
     console.log("Clicked Year: ", val);
   }
-  onDayClick = (e, day) => {
-    console.log(day);
+  onDayClick = (e, reservationDate) => {
+    console.log(e.target, reservationDate);
+    this.setState({ date: reservationDate });
   };
+
   render() {
     console.log(this.props.users);
     console.log(this.props.reservations);
     let day = "";
-    console.log(day);
     return (
       <div className="selectionpage">
         <div className="selection">
