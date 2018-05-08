@@ -26,6 +26,9 @@ class Calendar extends Component {
   month = () => {
     return this.state.dateContext.format("MMMM");
   };
+  monthShort=()=>{
+    return this.state.dateContext.format("MM")
+  }
   daysInMonth = () => {
     return this.state.dateContext.daysInMonth();
   };
@@ -33,7 +36,7 @@ class Calendar extends Component {
     return this.state.dateContext.get("date");
   };
   currentDay = () => {
-    return this.state.dateContext.format("D");
+    return this.state.dateContext.format("DD");
   };
   firstDayOfMonth = () => {
     let dateContext = this.state.dateContext;
@@ -178,7 +181,9 @@ class Calendar extends Component {
     for (let day = 1; day <= this.daysInMonth(); day++) {
       let className = day == this.currentDay() ? "day current-day" : "day";
       let selectedClass = day == this.state.selectedDay ? " selected-day " : "";
-      let reservationDate = this.year() + " " + this.month() + day;
+      let dayPickup= day < 10 ? '0'+ day : day;
+      console.log(dayPickup);
+      let reservationDate = this.year() + "-" + this.monthShort() +"-"+ dayPickup;
       daysInMonth.push(
         <td key={day} className={className + selectedClass}>
           <span
@@ -214,7 +219,7 @@ class Calendar extends Component {
     const calElements = rows.map((day, index) => {
       return <tr key={index * 100}>{day}</tr>;
     });
-
+    console.log(this.currentDay());
     return (
       <div className="calendar-container" style={this.style}>
         <table className="calendar">

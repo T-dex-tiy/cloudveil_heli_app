@@ -41,9 +41,10 @@ class ResPage extends Component {
         time: this.refs.pickupTime.value
       };
       this.props.newReservation(Res);
-      console.log(pickUpZone, pickUpLocation);
       return;
-    } else {
+    } else if (this.refs.opsArea.value == "null"||pickUpLocation=="null"||this.refs.guest.value=="null"||this.refs.pickupTime.value=="null"){
+      alert("Please Update Reservation")
+      }else {
       const Res = {
         opsArea: this.refs.opsArea.value,
         hangarPickup: pickUpLocation,
@@ -76,7 +77,7 @@ class ResPage extends Component {
           <select className="dropdownStyle" ref="opsArea">
             <option
               className="dropdownStyle"
-              value=""
+              value="null"
               disable="true"
               selected
               hidden
@@ -98,7 +99,7 @@ class ResPage extends Component {
           <select className="dropdownStyle" ref="hangarPickup">
             <option
               className="dropdownStyle"
-              value=""
+              value="null"
               disable="true"
               selected
               hidden
@@ -120,7 +121,7 @@ class ResPage extends Component {
           <select className="dropdownStyle" ref="guest">
             <option
               className="dropdownStyle"
-              value=""
+              value="null"
               disable="true"
               selected
               hidden
@@ -155,7 +156,7 @@ class ResPage extends Component {
         </div>
         <div className="selection">
           <select className="dropdownStyle" ref="pickupTime">
-            <option disable="true" selected hidden>
+            <option disable="true"  value= "null" selected hidden>
               AM or PM
             </option>
             <option value="AM">AM</option>
