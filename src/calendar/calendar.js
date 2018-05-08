@@ -182,7 +182,6 @@ class Calendar extends Component {
       let className = day == this.currentDay() ? "day current-day" : "day";
       let selectedClass = day == this.state.selectedDay ? " selected-day " : "";
       let dayPickup= day < 10 ? '0'+ day : day;
-      console.log(dayPickup);
       let reservationDate = this.year() + "-" + this.monthShort() +"-"+ dayPickup;
       daysInMonth.push(
         <td key={day} className={className + selectedClass}>
@@ -218,8 +217,7 @@ class Calendar extends Component {
 
     const calElements = rows.map((day, index) => {
       return <tr key={index * 100}>{day}</tr>;
-    });
-    console.log(this.currentDay());
+    }); 
     return (
       <div className="calendar-container" style={this.style}>
         <table className="calendar">

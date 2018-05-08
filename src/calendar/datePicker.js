@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Reservation from "./reservations";
 import Calendar from "./calendar";
+import uuid from "uuid"
 
 const style = {
   position: "relative",
@@ -34,11 +35,12 @@ class ResPage extends Component {
       let pickUpZone = prompt("Enter Location for Pick up");
       pickUpLocation = pickUpZone;
       const Res = {
-        opsArea: this.refs.opsArea.value,
-        hangarPickup: pickUpLocation,
-        guest: this.refs.guest.value,
+        groupUID:uuid(),
+        operatingArea: this.refs.opsArea.value,
+        pickupLocation: pickUpLocation,
+        numberOfAttendees: this.refs.guest.value,
         day: this.state.date,
-        time: this.refs.pickupTime.value
+        timeSlot: this.refs.pickupTime.value
       };
       this.props.newReservation(Res);
       return;
@@ -46,11 +48,12 @@ class ResPage extends Component {
       alert("Please Update Reservation")
       }else {
       const Res = {
-        opsArea: this.refs.opsArea.value,
-        hangarPickup: pickUpLocation,
-        guest: this.refs.guest.value,
+        groupUID:uuid(),
+        operatingArea: this.refs.opsArea.value,
+        pickupLocation: pickUpLocation,
+        numberOfAttendees: this.refs.guest.value,
         day: this.state.date,
-        time: this.refs.pickupTime.value
+        timeSlot: this.refs.pickupTime.value
       };
       console.log(Res.hangarPickup);
       this.props.newReservation(Res);
@@ -60,7 +63,6 @@ class ResPage extends Component {
 
   onClickYear(event) {
     const val = event;
-    console.log("Clicked Year: ", val);
   }
   onDayClick = (e, reservationDate) => {
     console.log(e.target, reservationDate);
@@ -68,8 +70,6 @@ class ResPage extends Component {
   };
 
   render() {
-    console.log(this.props.users);
-    console.log(this.props.reservations);
     let day = "";
     return (
       <div className="selectionpage">
@@ -84,13 +84,13 @@ class ResPage extends Component {
             >
               Choose Your Operating Area
             </option>
-            <option className="dropdownStyle" value="North">
+            <option className="dropdownStyle" value="North Operating Area">
               North Operation Area
             </option>
-            <option className="dropdownStyle" value="Central">
+            <option className="dropdownStyle" value="Central Operating Area">
               Central Operation Area
             </option>
-            <option className="dropdownStyle" value="South">
+            <option className="dropdownStyle" value="Southern Operating Area">
               South Operation Area
             </option>
           </select>
@@ -106,10 +106,10 @@ class ResPage extends Component {
             >
               Choose Your Pick Up Location
             </option>
-            <option className="dropdownStyle" value="Heber">
+            <option className="dropdownStyle" value="Heber Hangar">
               Heber Hanger
             </option>
-            <option className="dropdownStyle" value="NSL">
+            <option className="dropdownStyle" value="North Salt Lake Hangar">
               North Salt Lake Hanger
             </option>
             <option className="dropdownStyle" value="Other">

@@ -94,11 +94,12 @@ class App extends Component {
   }
 
   newReservation(Res){
+    alert("You are booked for "+ Res.operatingArea+ ' skiing lodge on ' + Res.day)
+    alert("You will be flying out of "+Res.pickupLocation+ ". Your pick up time is in the "+ Res.timeSlot )
     console.log(Res, "top page")
   }
 
   render() {
-    console.log(this.state.remainingdays);
     var userPage;
     if (this.state.user == null) {
       userPage = (
