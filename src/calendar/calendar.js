@@ -7,7 +7,8 @@ class Calendar extends Component {
     today: moment(),
     showMonthPopUp: false,
     showYearPopup: false,
-    showYearEdit: false
+    showYearEdit: false,
+    selectedDay: false
   };
   constructor(props) {
     super(props);
@@ -26,9 +27,9 @@ class Calendar extends Component {
   month = () => {
     return this.state.dateContext.format("MMMM");
   };
-  monthShort=()=>{
-    return this.state.dateContext.format("MM")
-  }
+  monthShort = () => {
+    return this.state.dateContext.format("MM");
+  };
   daysInMonth = () => {
     return this.state.dateContext.daysInMonth();
   };
@@ -158,6 +159,15 @@ class Calendar extends Component {
     );
   };
   onDayClick = (e, reservationDate) => {
+    console.log(e.target);
+    this.setState(
+      {
+        selectedDay: !this.state.selectedDay
+      },
+      () => {
+        console.log("Selected", this.state.selectedDay);
+      }
+    );
     this.props.onDayClick && this.props.onDayClick(e, reservationDate);
   };
   render() {
@@ -180,12 +190,17 @@ class Calendar extends Component {
     let daysInMonth = [];
     for (let day = 1; day <= this.daysInMonth(); day++) {
       let className = day == this.currentDay() ? "day current-day" : "day";
-      let selectedClass = day == this.state.selectedDay ? " selected-day " : "";
-      let dayPickup= day < 10 ? '0'+ day : day;
-      let reservationDate = this.year() + "-" + this.monthShort() +"-"+ dayPickup;
+      let selectedClass =day == this.state.selectedDay ? " selected-day " : "";
+      let flyingDay1 = day == ((Number(this.currentDay()) + 1) || (Number(this.currentDay())+2)) ? "fly" : "standby";
+      // let flyingDay2 = day == Number(this.currentDay()) + 2 ? "fly" : "standby";
+
+      let dayPickup = day < 10 ? "0" + day : day;
+      let reservationDate =
+        this.year() + "-" + this.monthShort() + "-" + dayPickup;
       daysInMonth.push(
-        <td key={day} className={className + selectedClass}>
+        <td key={day} className={className}>
           <span
+            className={flyingDay1+selectedClass}
             onClick={e => {
               this.onDayClick(e, reservationDate);
             }}
@@ -217,7 +232,7 @@ class Calendar extends Component {
 
     const calElements = rows.map((day, index) => {
       return <tr key={index * 100}>{day}</tr>;
-    }); 
+    });
     return (
       <div className="calendar-container" style={this.style}>
         <table className="calendar">

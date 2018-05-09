@@ -218,12 +218,22 @@ tr {
   height: 24px;
   line-height: 24px; }
 
+.standby {
+  display: block;
+  border: 4px double yellow;
+  border-radius: 100px; }
+
+.fly {
+  display: block;
+  border: 4px double green;
+  border-radius: 100px; }
+
 .current-day {
   background-color: #D48C3C;
   width: 28px;
   height: 28px;
   line-height: 28px;
-  border-radius: 2%;
+  border-radius: 35%;
   color: #FFFFFF; }
 
 .selected-day {
