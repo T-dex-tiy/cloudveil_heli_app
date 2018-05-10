@@ -16,7 +16,6 @@ class Calendar extends Component {
     super(props);
     this.width = props.width || "350px";
     this.style = props.style || {};
-    this.style.width = this.width;
   }
 
   weekdays = moment.weekdays();

@@ -5,7 +5,8 @@ import uuid from "uuid"
 
 const style = {
   position: "relative",
-  margin: "50px auto"
+  margin: "50px auto",
+  width:"302px"
 };
 
 class ResPage extends Component {
@@ -165,7 +166,6 @@ class ResPage extends Component {
         </div>
         <Calendar
           style={style}
-          width="402px"
           onDayClick={(e, day) => this.onDayClick(e, day)}
         />
         <div>
