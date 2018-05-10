@@ -289,6 +289,12 @@ tr {
    border-radius: 100px;
    }
 
+  .flyno{
+    display:block;
+    border:4px double yellow;
+    border-radius:100px;
+  }
+
 .current-day {
     background-color: $cloudveilGold;
     width: 28px;
@@ -300,10 +306,8 @@ tr {
 
 .selected-day {
     background-color:green;
-    width: 28px;
-    height: 28px;
     line-height: 28px;
-    border-radius: 2%;
+    border-radius: 100px;
     color: black;
 }
 

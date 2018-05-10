@@ -5,10 +5,12 @@ class Calendar extends Component {
   state = {
     dateContext: moment(),
     today: moment(),
+    tomorrow:moment().add(1,'days'),
+    twoDaysOut:moment().add(2, 'days'),
     showMonthPopUp: false,
     showYearPopup: false,
     showYearEdit: false,
-    selectedDay: false
+    selectedDay: null,
   };
   constructor(props) {
     super(props);
@@ -39,6 +41,12 @@ class Calendar extends Component {
   currentDay = () => {
     return this.state.dateContext.format("DD");
   };
+  tomorrowDay=()=>{
+    return this.state.tomorrow.format("DD")
+  }
+  twoDaysOut=()=>{
+    return this.state.twoDaysOut.format("DD")
+  }
   firstDayOfMonth = () => {
     let dateContext = this.state.dateContext;
     let firstDay = moment(dateContext)
@@ -158,15 +166,12 @@ class Calendar extends Component {
       </span>
     );
   };
-  onDayClick = (e, reservationDate) => {
+  onDayClick = (e, reservationDate, day) => {
     console.log(e.target);
     this.setState(
       {
-        selectedDay: !this.state.selectedDay
+        selectedDay: day
       },
-      () => {
-        console.log("Selected", this.state.selectedDay);
-      }
     );
     this.props.onDayClick && this.props.onDayClick(e, reservationDate);
   };
@@ -190,19 +195,19 @@ class Calendar extends Component {
     let daysInMonth = [];
     for (let day = 1; day <= this.daysInMonth(); day++) {
       let className = day == this.currentDay() ? "day current-day" : "day";
-      let selectedClass =day == this.state.selectedDay ? " selected-day " : "";
-      let flyingDay1 = day == ((Number(this.currentDay()) + 1) || (Number(this.currentDay())+2)) ? "fly" : "standby";
-      // let flyingDay2 = day == Number(this.currentDay()) + 2 ? "fly" : "standby";
-
+      let selectedClass = day == this.state.selectedDay ? " selected-day " : "";
+      console.log(selectedClass, this.state.selectedDay);
+      let flyingDay1 = this.tomorrowDay() ? "fly " : "flyno ";
+      let standby="standby";
       let dayPickup = day < 10 ? "0" + day : day;
       let reservationDate =
         this.year() + "-" + this.monthShort() + "-" + dayPickup;
       daysInMonth.push(
         <td key={day} className={className}>
           <span
-            className={flyingDay1+selectedClass}
+            className={flyingDay1  + selectedClass}
             onClick={e => {
-              this.onDayClick(e, reservationDate);
+              this.onDayClick(e, reservationDate, day);
             }}
           >
             {day}
