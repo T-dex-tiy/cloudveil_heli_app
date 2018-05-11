@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import Reservation from "./reservations";
 import Calendar from "./calendar";
-import uuid from "uuid"
+import uuid from "uuid";
 
 const style = {
   position: "relative",
   margin: "50px auto",
-  width:"302px"
+  width: "302px"
 };
 
 class ResPage extends Component {
@@ -36,7 +36,7 @@ class ResPage extends Component {
       let pickUpZone = prompt("Enter Location for Pick up");
       pickUpLocation = pickUpZone;
       const Res = {
-        groupUID:uuid(),
+        groupUID: uuid(),
         operatingArea: this.refs.opsArea.value,
         pickupLocation: pickUpLocation,
         numberOfAttendees: this.refs.guest.value,
@@ -45,20 +45,23 @@ class ResPage extends Component {
       };
       this.props.newReservation(Res);
       return;
-    } else if (this.refs.opsArea.value == "null"||pickUpLocation=="null"||this.refs.guest.value=="null"||this.refs.pickupTime.value=="null"){
-      alert("Please Update Reservation")
-      }else {
+    } else if (
+      this.refs.opsArea.value == "null" ||
+      pickUpLocation == "null" ||
+      this.refs.guest.value == "null" ||
+      this.refs.pickupTime.value == "null"
+    ) {
+      alert("Please Update Reservation");
+    } else {
       const Res = {
-        groupUID:uuid(),
+        groupUID: uuid(),
         operatingArea: this.refs.opsArea.value,
         pickupLocation: pickUpLocation,
         numberOfAttendees: this.refs.guest.value,
         day: this.state.date,
         timeSlot: this.refs.pickupTime.value
       };
-      console.log(Res.hangarPickup);
       this.props.newReservation(Res);
-      alert("Get ready to Fly ");
     }
   }
 
@@ -157,7 +160,7 @@ class ResPage extends Component {
         </div>
         <div className="selection">
           <select className="dropdownStyle" ref="pickupTime">
-            <option disable="true"  value= "null" selected hidden>
+            <option disable="true" value="null" selected hidden>
               AM or PM
             </option>
             <option value="AM">AM</option>

@@ -8,7 +8,6 @@ class PicBox extends Component {
 
   render() {
     var url = Object.keys(this.props.src).map(key => this.props.src[key]);
-    var urltest = Object.keys(this.props.src).map(key => key);
 
     const picAdd = Object.keys(url).map(key => {
       let newDis = {};

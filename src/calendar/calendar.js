@@ -166,7 +166,6 @@ class Calendar extends Component {
     );
   };
   onDayClick = (e, reservationDate, day) => {
-    console.log(e.target);
     this.setState(
       {
         selectedDay: day
@@ -195,8 +194,7 @@ class Calendar extends Component {
     for (let day = 1; day <= this.daysInMonth(); day++) {
       let className = day == this.currentDay() ? "day current-day" : "day";
       let selectedClass = day == this.state.selectedDay ? " selected-day " : "";
-      console.log(selectedClass, this.state.selectedDay);
-      let flyingDay1 = this.tomorrowDay() ? "fly " : "flyno ";
+      let flyingDay1 = day==this.tomorrowDay() ? "fly " : "flyno ";
       let standby="standby";
       let dayPickup = day < 10 ? "0" + day : day;
       let reservationDate =
