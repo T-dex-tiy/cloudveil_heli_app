@@ -36,7 +36,6 @@ class ResPage extends Component {
       let pickUpZone = prompt("Enter Location for Pick up");
       pickUpLocation = pickUpZone;
       const Res = {
-        groupUID: uuid(),
         operatingArea: this.refs.opsArea.value,
         pickupLocation: pickUpLocation,
         numberOfAttendees: this.refs.guest.value,
@@ -54,7 +53,6 @@ class ResPage extends Component {
       alert("Please Update Reservation");
     } else {
       const Res = {
-        groupUID: uuid(),
         operatingArea: this.refs.opsArea.value,
         pickupLocation: pickUpLocation,
         numberOfAttendees: this.refs.guest.value,

@@ -1,5 +1,4 @@
-
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class PicBox extends Component {
   constructor(props) {
@@ -26,7 +25,6 @@ class PicBox extends Component {
                 key={key}
                 date={this.props.src[key]}
                 src={picAdd[key]}
-                alt={picAdd[key].url}
               />
             </div>
           );

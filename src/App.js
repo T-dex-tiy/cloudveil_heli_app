@@ -17,7 +17,9 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      production: {},
+      production: {
+        days: {}
+      },
       page: null,
       user: false,
       uid: "",
@@ -28,13 +30,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    if (this.state.user != "testgroup1@cloudveil.com") {
+    {
       base.syncState(`staging`, {
-        context: this,
-        state: "production"
-      });
-    } else {
-      base.syncState(`production`, {
         context: this,
         state: "production"
       });
@@ -109,10 +106,15 @@ class App extends Component {
         let keys = res[key].reservationTwo;
         return keys;
       })
-      .map(keys => res[keys]);
+      .map(keys => {
+        let date = res[keys].date;
+        let flyTime = res[keys].reservationTwo.timeSlot;
+        let mappedRes = date + " " + flyTime;
+        return mappedRes;
+      });
     let newResMapTwo = res.map(key => res[key]);
     console.log(resMapTwo);
-    console.log(newResMapTwo);
+
     // let openRes1 = Object.keys(res).filter(key => {
     //   if (Res.timeSlot[key] != res[key].reservationTwo) {
     //     return res[key].reservationTwo;
@@ -126,9 +128,19 @@ class App extends Component {
     //   newRes[key] = res[key];
     //   return newRes[key].reservationTwo[key].timeSlot;
     // });
-    console.log(resMapOne.includes(Res.day + " " + Res.timeSlot));
-    if (resMapOne.includes(Res.day + " " + Res.timeSlot)) {
+    console.log(
+      resMapOne.includes(Res.day + " " + Res.timeSlot) ||
+        resMapTwo.includes(Res.day + " " + Res.timeSlot)
+    );
+    if (
+      resMapOne.includes(Res.day + " " + Res.timeSlot) &&
+      resMapTwo.includes(Res.day + " " + Res.timeSlot)
+    ) {
       alert("All booked up! Please Select a different day!");
+    } else if (resMapOne.includes(Res.day + " " + Res.timeSlot)) {
+      alert(
+        "This time slot is not avaiable please select a different time on that day"
+      );
     } else {
       alert(
         "You are booked for " +
@@ -142,11 +154,36 @@ class App extends Component {
           ". Your pick up time is in the " +
           Res.timeSlot
       );
-    }
 
-    // console.log(res);
-    console.log(resMapOne);
-    // console.log(resMapTwo);
+      //Map over next variable and then push res into Reservation One. Repeat with resTwo in different statement
+      // const updatedReservations = { ...updatedNewRes, Res };
+      console.log(res, this.state.production.days);
+      const addReservation = {
+        date: Res.day,
+        ref: `https://bluebirdheli-d1f5.firebaseio.com/staging/days/${Res.day}`,
+        reservationOne: {
+          groupUID: this.state.uid,
+          numberOfAttendees: Number(Res.numberOfAttendees),
+          operatingArea: Res.operatingArea,
+          pickupLocation: Res.pickupLocation,
+          pickupTime: "figure this out",
+          ref: `https://bluebirdheli-d1f5.firebaseio.com/staging/days/${
+            Res.day
+          }`,
+          timeSlot: Res.timeSlot
+        }
+      };
+      const updatedReservations = {
+        ...this.state.production.days,
+        [Res.day]: addReservation
+      };
+      this.setState(prevState => ({
+        production: {
+          ...prevState.production,
+          days: updatedReservations
+        }
+      }));
+    }
   }
 
   render() {
@@ -192,6 +229,7 @@ class App extends Component {
             uid={this.state.uid}
             renderLogin={this.renderLogin.bind(this)}
             logOut={this.logOut.bind(this)}
+            reservations={this.state.production.days}
           />
           <NavBar
             eventEmitter={this.eventEmitter}

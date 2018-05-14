@@ -1,11 +1,25 @@
-import React, { Component } from 'react';
-import mainLogo from './styles/logos/mainlogo2.png';
-
-import LogIn from './routes/logIn';
-import './styles/app.css';
+import React, { Component } from "react";
+import mainLogo from "./styles/logos/mainlogo2.png";
+import LogIn from "./routes/logIn";
+import "./styles/app.css";
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
+    const madeReservations = Object.keys(this.props.reservations).map(
+      key => this.props.reservations[key]
+    );
+
+    const updatedReservations = Object.keys(madeReservations).map(key => {
+      if (madeReservations[key].reservationOne.groupUID === this.props.uid) {
+        console.log(madeReservations[key]);
+        return madeReservations[key].reservationOne;
+      }
+    });
+    console.log(madeReservations, updatedReservations);
     return (
       <div className="header font">
         <LogIn
