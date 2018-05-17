@@ -13,24 +13,21 @@ class PicBox extends Component {
       newDis[key] = url[key];
       return newDis[key].url;
     });
+    const uiDisplay = Object.keys(picAdd, url).map(key => {
+      return (
+        <div>
+          <h3 className="font">{this.props.dates[key]}</h3>
+          <img
+            className="Display"
+            key={key}
+            date={this.props.src[key]}
+            src={picAdd[key]}
+          />
+        </div>
+      );
+    });
     console.log(this.props.dates);
-    return (
-      <div className="BrianBoitano">
-        {Object.keys(picAdd, url).map(key => {
-          return (
-            <div>
-              <h3 className="font">{this.props.dates[key]}</h3>
-              <img
-                className="Display"
-                key={key}
-                date={this.props.src[key]}
-                src={picAdd[key]}
-              />
-            </div>
-          );
-        })}
-      </div>
-    );
+    return <div className="BrianBoitano">{uiDisplay}</div>;
   }
 }
 export default PicBox;

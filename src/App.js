@@ -113,21 +113,8 @@ class App extends Component {
         return mappedRes;
       });
     let newResMapTwo = res.map(key => res[key]);
-    console.log(resMapTwo);
-
-    // let openRes1 = Object.keys(res).filter(key => {
-    //   if (Res.timeSlot[key] != res[key].reservationTwo) {
-    //     return res[key].reservationTwo;
-    //   } else {
-    //     alert("does this actually work?");
-    //   }
-    // });
-
-    // let openRes2 = Object.keys(res).filter(key => {
-    //   let newRes = [];
-    //   newRes[key] = res[key];
-    //   return newRes[key].reservationTwo[key].timeSlot;
-    // });
+    console.log(resMapTwo, "two");
+    console.log(resMapOne, "one");
     console.log(
       resMapOne.includes(Res.day + " " + Res.timeSlot) ||
         resMapTwo.includes(Res.day + " " + Res.timeSlot)
@@ -141,7 +128,15 @@ class App extends Component {
       alert(
         "This time slot is not avaiable please select a different time on that day"
       );
+    } else if (resMapTwo.includes(Res.day + " " + Res.timeSlot)) {
+      alert(
+        "This time slot is not avaiable please select a different time on that day"
+      );
     } else {
+      const checkRes = Object.keys(res).map(key => {
+        let date = res[key];
+        console.log(date, "checkedRes");
+      });
       alert(
         "You are booked for " +
           Res.operatingArea +

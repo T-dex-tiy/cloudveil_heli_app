@@ -127,7 +127,7 @@ html {
 
 .PicDisplay {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 20px;
   overflow: scroll; }
 
@@ -135,6 +135,11 @@ html {
   border: 10px solid #000;
   width: 20em;
   height: 20em; }
+
+.BrianBoitano {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px; }
 
 .selectionpage {
   display: grid;
