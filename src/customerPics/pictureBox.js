@@ -15,7 +15,7 @@ class PicBox extends Component {
     });
     const uiDisplay = Object.keys(picAdd, url).map(key => {
       return (
-        <div>
+        <div className="BrianBoitano">
           <h3 className="font">{this.props.dates[key]}</h3>
           <img
             className="Display"
