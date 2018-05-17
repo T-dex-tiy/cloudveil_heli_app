@@ -26,7 +26,7 @@ class PicBox extends Component {
         </div>
       );
     });
-    console.log(this.props.dates);
+    console.log(uiDisplay);
     return <div className="BrianBoitano">{uiDisplay}</div>;
   }
 }
