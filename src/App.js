@@ -113,12 +113,6 @@ class App extends Component {
         return mappedRes;
       });
     let newResMapTwo = res.map(key => res[key]);
-    console.log(resMapTwo, "two");
-    console.log(resMapOne, "one");
-    console.log(
-      resMapOne.includes(Res.day + " " + Res.timeSlot) ||
-        resMapTwo.includes(Res.day + " " + Res.timeSlot)
-    );
     if (
       resMapOne.includes(Res.day + " " + Res.timeSlot) &&
       resMapTwo.includes(Res.day + " " + Res.timeSlot)
@@ -153,7 +147,7 @@ class App extends Component {
       //Map over next variable and then push res into Reservation One. Repeat with resTwo in different statement
       // const updatedReservations = { ...updatedNewRes, Res };
       console.log(res, this.state.production.days);
-      const addReservation = {
+      const addReservationAM = {
         date: Res.day,
         ref: `https://bluebirdheli-d1f5.firebaseio.com/staging/days/${Res.day}`,
         reservationOne: {
@@ -168,14 +162,34 @@ class App extends Component {
           timeSlot: Res.timeSlot
         }
       };
-      const updatedReservations = {
+      const addReservationPM = {
+        date: Res.day,
+        ref: `https://bluebirdheli-d1f5.firebaseio.com/staging/days/${Res.day}`,
+        reservationTwo: {
+          groupUID: this.state.uid,
+          numberOfAttendees: Number(Res.numberOfAttendees),
+          operatingArea: Res.operatingArea,
+          pickupLocation: Res.pickupLocation,
+          pickupTime: "figure this out",
+          ref: `https://bluebirdheli-d1f5.firebaseio.com/staging/days/${
+            Res.day
+          }`,
+          timeSlot: Res.timeSlot
+        }
+      };
+
+      const updatedReservationsAM = {
         ...this.state.production.days,
-        [Res.day]: addReservation
+        [Res.day]: addReservationAM
+      };
+      const updatedReservationsPM = {
+        ...this.state.production.days,
+        [Res.day]: addReservationPM
       };
       this.setState(prevState => ({
         production: {
           ...prevState.production,
-          days: updatedReservations
+          days: updatedReservationsAM
         }
       }));
     }

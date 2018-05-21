@@ -15,14 +15,16 @@ class PicBox extends Component {
     });
     const uiDisplay = Object.keys(picAdd, url).map(key => {
       return (
-        <div className="BrianBoitano">
+        <div>
           <h3 className="font">{this.props.dates[key]}</h3>
-          <img
-            className="Display"
-            key={key}
-            date={this.props.src[key]}
-            src={picAdd[key]}
-          />
+          <div>
+            <img
+              className="Display"
+              key={key}
+              date={this.props.src[key]}
+              src={picAdd[key]}
+            />
+          </div>
         </div>
       );
     });
