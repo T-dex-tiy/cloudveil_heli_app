@@ -90,7 +90,6 @@ class App extends Component {
   }
 
   newReservation(Res) {
-    console.log(Res);
     let res = Object.keys(this.state.production.days).map(
       key => this.state.production.days[key]
     );
@@ -113,6 +112,34 @@ class App extends Component {
         return mappedRes;
       });
     let newResMapTwo = res.map(key => res[key]);
+
+    const addReservationAM = {
+      date: Res.day,
+      ref: `https://bluebirdheli-d1f5.firebaseio.com/staging/days/${Res.day}`,
+      reservationOne: {
+        groupUID: this.state.uid,
+        numberOfAttendees: Number(Res.numberOfAttendees),
+        operatingArea: Res.operatingArea,
+        pickupLocation: Res.pickupLocation,
+        pickupTime: "figure this out",
+        ref: `https://bluebirdheli-d1f5.firebaseio.com/staging/days/${Res.day}`,
+        timeSlot: Res.timeSlot
+      }
+    };
+    const addReservationPM = {
+      date: Res.day,
+      ref: `https://bluebirdheli-d1f5.firebaseio.com/staging/days/${Res.day}`,
+      reservationTwo: {
+        groupUID: this.state.uid,
+        numberOfAttendees: Number(Res.numberOfAttendees),
+        operatingArea: Res.operatingArea,
+        pickupLocation: Res.pickupLocation,
+        pickupTime: "figure this out",
+        ref: `https://bluebirdheli-d1f5.firebaseio.com/staging/days/${Res.day}`,
+        timeSlot: Res.timeSlot
+      }
+    };
+
     if (
       resMapOne.includes(Res.day + " " + Res.timeSlot) &&
       resMapTwo.includes(Res.day + " " + Res.timeSlot)
@@ -128,8 +155,14 @@ class App extends Component {
       );
     } else {
       const checkRes = Object.keys(res).map(key => {
-        let date = res[key];
-        console.log(date, "checkedRes");
+        let resOne = res[key];
+        console.log(resOne.reservationOne);
+        if(Object.keys(resOne).includes(resOne.reservationOne)){
+          console.log("Yep");
+        }else{
+          console.log("nope");
+        }
+        console.log(resOne, "will this work?");
       });
       alert(
         "You are booked for " +
@@ -146,52 +179,84 @@ class App extends Component {
 
       //Map over next variable and then push res into Reservation One. Repeat with resTwo in different statement
       // const updatedReservations = { ...updatedNewRes, Res };
-      console.log(res, this.state.production.days);
-      const addReservationAM = {
-        date: Res.day,
-        ref: `https://bluebirdheli-d1f5.firebaseio.com/staging/days/${Res.day}`,
-        reservationOne: {
-          groupUID: this.state.uid,
-          numberOfAttendees: Number(Res.numberOfAttendees),
-          operatingArea: Res.operatingArea,
-          pickupLocation: Res.pickupLocation,
-          pickupTime: "figure this out",
-          ref: `https://bluebirdheli-d1f5.firebaseio.com/staging/days/${
-            Res.day
-          }`,
-          timeSlot: Res.timeSlot
+      let mappedStateReservation = Object.keys(res).map(key =>{
+        let checkRes= Object.keys(res[key]);
+        if (checkRes.includes("reservationOne")) {
+          console.log("Will this shit actually work?");
+          const updatedReservationsPM = {
+            ...this.state.production.days,
+            [Res.day]: addReservationPM
+          };
+          console.log("going with the second Res!");
+          this.setState(prevState => ({
+            production: {
+              ...prevState.production,
+              days: updatedReservationsPM
+            }
+          }));
+        }else{
+          const updatedReservationsAM = {
+            ...this.state.production.days,
+            [Res.day]: addReservationAM
+          };
+          console.log("goign with the first instead!");
+          // this.setState(prevState => ({
+          //   production: {
+          //     ...prevState.production,
+          //     days: updatedReservationsAM
+          //   }
+          // }));
         }
-      };
-      const addReservationPM = {
-        date: Res.day,
-        ref: `https://bluebirdheli-d1f5.firebaseio.com/staging/days/${Res.day}`,
-        reservationTwo: {
-          groupUID: this.state.uid,
-          numberOfAttendees: Number(Res.numberOfAttendees),
-          operatingArea: Res.operatingArea,
-          pickupLocation: Res.pickupLocation,
-          pickupTime: "figure this out",
-          ref: `https://bluebirdheli-d1f5.firebaseio.com/staging/days/${
-            Res.day
-          }`,
-          timeSlot: Res.timeSlot
-        }
-      };
+        return res[key]}
+      );
 
-      const updatedReservationsAM = {
-        ...this.state.production.days,
-        [Res.day]: addReservationAM
-      };
-      const updatedReservationsPM = {
-        ...this.state.production.days,
-        [Res.day]: addReservationPM
-      };
-      this.setState(prevState => ({
-        production: {
-          ...prevState.production,
-          days: updatedReservationsAM
-        }
-      }));
+      console.log(this.state.production.days, "test");
+
+      // const addReservationAM = {
+      //   date: Res.day,
+      //   ref: `https://bluebirdheli-d1f5.firebaseio.com/staging/days/${Res.day}`,
+      //   reservationOne: {
+      //     groupUID: this.state.uid,
+      //     numberOfAttendees: Number(Res.numberOfAttendees),
+      //     operatingArea: Res.operatingArea,
+      //     pickupLocation: Res.pickupLocation,
+      //     pickupTime: "figure this out",
+      //     ref: `https://bluebirdheli-d1f5.firebaseio.com/staging/days/${
+      //       Res.day
+      //     }`,
+      //     timeSlot: Res.timeSlot
+      //   }
+      // };
+      // const addReservationPM = {
+      //   date: Res.day,
+      //   ref: `https://bluebirdheli-d1f5.firebaseio.com/staging/days/${Res.day}`,
+      //   reservationTwo: {
+      //     groupUID: this.state.uid,
+      //     numberOfAttendees: Number(Res.numberOfAttendees),
+      //     operatingArea: Res.operatingArea,
+      //     pickupLocation: Res.pickupLocation,
+      //     pickupTime: "figure this out",
+      //     ref: `https://bluebirdheli-d1f5.firebaseio.com/staging/days/${
+      //       Res.day
+      //     }`,
+      //     timeSlot: Res.timeSlot
+      //   }
+      // };
+
+      // const updatedReservationsAM = {
+      //   ...this.state.production.days,
+      //   [Res.day]: addReservationAM
+      // };
+      // const updatedReservationsPM = {
+      //   ...this.state.production.days,
+      //   [Res.day]: addReservationPM
+      // };
+      // // this.setState(prevState => ({
+      // //   production: {
+      // //     ...prevState.production,
+      // //     days: updatedReservationsAM
+      // //   }
+      // // }));
     }
   }
 

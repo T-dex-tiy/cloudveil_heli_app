@@ -13,13 +13,11 @@ class Header extends Component {
       key => this.props.reservations[key]
     );
 
-    const updatedReservations = Object.keys(madeReservations).map(key => {
-      if (madeReservations[key].reservationOne.groupUID === this.props.uid) {
-        console.log(madeReservations[key]);
-        return madeReservations[key].reservationOne;
-      }
-    });
-    console.log(madeReservations, updatedReservations);
+    // const updatedReservations = Object.keys(madeReservations).map(key => {
+    //   if (madeReservations[key].reservationOne.groupUID||madeReservations[key].reservationTwo.groupUID === this.props.uid) {
+    //     return madeReservations[key].reservationOne;
+    //   }
+    // });
     return (
       <div className="header font">
         <LogIn
@@ -30,7 +28,7 @@ class Header extends Component {
           logOut={this.props.logOut.bind(this)}
         />
         <div className="header_title">
-          <h1 className="title font">Cloudveil Heli</h1>
+          <h1 className="title font">Bluebird Heli</h1>
           <img className="mainLogo" src={mainLogo} />
         </div>
       </div>
