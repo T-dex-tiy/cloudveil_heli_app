@@ -12,12 +12,10 @@ class Header extends Component {
     const madeReservations = Object.keys(this.props.reservations).map(
       key => this.props.reservations[key]
     );
+    console.log(madeReservations);
+    const updatedReservations = madeReservations.map(key => [key]);
 
-    // const updatedReservations = Object.keys(madeReservations).map(key => {
-    //   if (madeReservations[key].reservationOne.groupUID||madeReservations[key].reservationTwo.groupUID === this.props.uid) {
-    //     return madeReservations[key].reservationOne;
-    //   }
-    // });
+    console.log(updatedReservations);
     return (
       <div className="header font">
         <LogIn

@@ -6,7 +6,7 @@ import uuid from "uuid";
 const style = {
   position: "relative",
   margin: "50px auto",
-  width: "302px"
+  width: "502px"
 };
 
 class ResPage extends Component {
@@ -19,8 +19,6 @@ class ResPage extends Component {
     this.onChange = this.onChange.bind(this);
   }
   onChange(event) {
-    console.log(this, "On Change");
-    console.log(this.getDate);
     const val = event;
     let newDate = val;
     this.setState({ date: newDate });
@@ -67,7 +65,6 @@ class ResPage extends Component {
     const val = event;
   }
   onDayClick = (e, reservationDate) => {
-    console.log(e.target, reservationDate);
     this.setState({ date: reservationDate });
   };
 

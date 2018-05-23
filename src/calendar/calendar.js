@@ -5,12 +5,12 @@ class Calendar extends Component {
   state = {
     dateContext: moment(),
     today: moment(),
-    tomorrow:moment().add(1,'days'),
-    twoDaysOut:moment().add(2, 'days'),
+    tomorrow: moment().add(1, "days"),
+    twoDaysOut: moment().add(2, "days"),
     showMonthPopUp: false,
     showYearPopup: false,
     showYearEdit: false,
-    selectedDay: null,
+    selectedDay: null
   };
   constructor(props) {
     super(props);
@@ -40,12 +40,12 @@ class Calendar extends Component {
   currentDay = () => {
     return this.state.dateContext.format("DD");
   };
-  tomorrowDay=()=>{
-    return this.state.tomorrow.format("DD")
-  }
-  twoDaysOut=()=>{
-    return this.state.twoDaysOut.format("DD")
-  }
+  tomorrowDay = () => {
+    return this.state.tomorrow.format("DD");
+  };
+  twoDaysOut = () => {
+    return this.state.twoDaysOut.format("DD");
+  };
   firstDayOfMonth = () => {
     let dateContext = this.state.dateContext;
     let firstDay = moment(dateContext)
@@ -166,11 +166,10 @@ class Calendar extends Component {
     );
   };
   onDayClick = (e, reservationDate, day) => {
-    this.setState(
-      {
-        selectedDay: day
-      },
-    );
+    console.log(this.refs);
+    this.setState({
+      selectedDay: day
+    });
     this.props.onDayClick && this.props.onDayClick(e, reservationDate);
   };
   render() {
@@ -192,17 +191,25 @@ class Calendar extends Component {
 
     let daysInMonth = [];
     for (let day = 1; day <= this.daysInMonth(); day++) {
-      let className = day == this.currentDay() ? "day current-day" : "day";
+      let month = moment().month() + 1;
+      let monthToString = month.toString();
+      let classDate = monthToString + "-" + day.toString();
+      let nextFlyDay = monthToString + "-" + (day + 1).toString();
+      let currentDate = monthToString + "-" + this.currentDay();
+      let tommorow = monthToString + "-" + this.tomorrowDay();
+      let twoDaysOut = monthToString + "-" + this.twoDaysOut();
+      let className = classDate == currentDate ? "day current-day" : "day";
       let selectedClass = day == this.state.selectedDay ? " selected-day " : "";
-      let flyingDay1 = day==this.tomorrowDay() ? "fly " : "flyno ";
-      let standby="standby";
+      let flyingDay1 = day == this.tomorrowDay() ? "fly " : "flyno ";
+      let standby = "standby";
       let dayPickup = day < 10 ? "0" + day : day;
       let reservationDate =
         this.year() + "-" + this.monthShort() + "-" + dayPickup;
       daysInMonth.push(
-        <td key={day} className={className}>
+        <td key={day} ref="day" className={className}>
           <span
-            className={flyingDay1  + selectedClass}
+            value={monthToString + "-" + day}
+            className={flyingDay1 + selectedClass}
             onClick={e => {
               this.onDayClick(e, reservationDate, day);
             }}

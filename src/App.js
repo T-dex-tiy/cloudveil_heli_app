@@ -95,8 +95,9 @@ class App extends Component {
     );
     let resMapOne = Object.keys(res).map(key => {
       let date = res[key].date;
+      // console.log(res[key].reservationOne.timeSlot, res[key]);
       let flyTime = res[key].reservationOne.timeSlot;
-      let mappedRes = date + " " + flyTime;
+      let mappedRes = date;
       return mappedRes;
     });
     let resMapTwo = Object.keys(res)
@@ -121,7 +122,7 @@ class App extends Component {
         numberOfAttendees: Number(Res.numberOfAttendees),
         operatingArea: Res.operatingArea,
         pickupLocation: Res.pickupLocation,
-        pickupTime: "figure this out",
+        pickupTime: Date.now(),
         ref: `https://bluebirdheli-d1f5.firebaseio.com/staging/days/${Res.day}`,
         timeSlot: Res.timeSlot
       }
@@ -134,7 +135,7 @@ class App extends Component {
         numberOfAttendees: Number(Res.numberOfAttendees),
         operatingArea: Res.operatingArea,
         pickupLocation: Res.pickupLocation,
-        pickupTime: "figure this out",
+        pickupTime: Date.now(),
         ref: `https://bluebirdheli-d1f5.firebaseio.com/staging/days/${Res.day}`,
         timeSlot: Res.timeSlot
       }
@@ -156,13 +157,33 @@ class App extends Component {
     } else {
       const checkRes = Object.keys(res).map(key => {
         let resOne = res[key];
-        console.log(resOne.reservationOne);
-        if(Object.keys(resOne).includes(resOne.reservationOne)){
-          console.log("Yep");
-        }else{
-          console.log("nope");
+        console.log(Object.keys(!resOne).includes("reservationOne"));
+        if (Object.keys(resOne).includes("reservationOne")) {
+          const updatedReservationsPM = {
+            ...this.state.production.days,
+            [Res.day]: addReservationPM
+          };
+          console.log("going with the second Res!", res[key].date);
+          console.log(Res, res[key]);
+          this.setState(prevState => ({
+            production: {
+              ...prevState.production,
+              days: updatedReservationsPM
+            }
+          }));
+        } else if (Object.keys(!resOne).includes("reservationOne")) {
+          const updatedReservationsAM = {
+            ...this.state.production.days,
+            [Res.day]: addReservationAM
+          };
+          console.log("goign with the first instead!", res[key].date);
+          this.setState(prevState => ({
+            production: {
+              ...prevState.production,
+              days: updatedReservationsAM
+            }
+          }));
         }
-        console.log(resOne, "will this work?");
       });
       alert(
         "You are booked for " +
@@ -179,38 +200,43 @@ class App extends Component {
 
       //Map over next variable and then push res into Reservation One. Repeat with resTwo in different statement
       // const updatedReservations = { ...updatedNewRes, Res };
-      let mappedStateReservation = Object.keys(res).map(key =>{
-        let checkRes= Object.keys(res[key]);
-        if (checkRes.includes("reservationOne")) {
-          console.log("Will this shit actually work?");
-          const updatedReservationsPM = {
-            ...this.state.production.days,
-            [Res.day]: addReservationPM
-          };
-          console.log("going with the second Res!");
-          this.setState(prevState => ({
-            production: {
-              ...prevState.production,
-              days: updatedReservationsPM
-            }
-          }));
-        }else{
-          const updatedReservationsAM = {
-            ...this.state.production.days,
-            [Res.day]: addReservationAM
-          };
-          console.log("goign with the first instead!");
-          // this.setState(prevState => ({
-          //   production: {
-          //     ...prevState.production,
-          //     days: updatedReservationsAM
-          //   }
-          // }));
-        }
-        return res[key]}
-      );
-
-      console.log(this.state.production.days, "test");
+      // let mappedStateReservation = Object.keys(res).map(key => {
+      //   let checkRes = Object.keys(res[key]);
+      //   // console.log(
+      //   //   checkRes[key].includes("reservationOne" || "reservationTwo"),
+      //   //   checkRes[key]
+      //   // );
+      //   if (checkRes[key].includes("reservationOne" || "reservationTwo")) {
+      //     console.log(
+      //       checkRes[key].includes("reservationOne"),
+      //       checkRes[key].date
+      //     );
+      //     const updatedReservationsPM = {
+      //       ...this.state.production.days,
+      //       [Res.day]: addReservationPM
+      //     };
+      //     console.log("going with the second Res!", res[key].date);
+      //     this.setState(prevState => ({
+      //       production: {
+      //         ...prevState.production,
+      //         days: updatedReservationsPM
+      //       }
+      //     }));
+      //   } else {
+      //     const updatedReservationsAM = {
+      //       ...this.state.production.days,
+      //       [Res.day]: addReservationAM
+      //     };
+      //     console.log("goign with the first instead!", res[key].date);
+      //     this.setState(prevState => ({
+      //       production: {
+      //         ...prevState.production,
+      //         days: updatedReservationsAM
+      //       }
+      //     }));
+      //   }
+      //   return res[key];
+      // });
 
       // const addReservationAM = {
       //   date: Res.day,
