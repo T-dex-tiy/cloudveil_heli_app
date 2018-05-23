@@ -1,13 +1,13 @@
 @font-face {
   font-family: Main;
   src: url("./fonts/cloudveil_font.otf"); }
+.font {
+  font-family: Main; }
+
 html {
   padding: 0;
   margin: 0;
   width: 100%; }
-  @media (max-width: 850px) {
-    html {
-      background-color: blue; } }
 
 .header {
   height: 7em;
@@ -20,9 +20,8 @@ html {
       height: 3em; } }
   @media (min-width: 850px) and (max-width: 1024px) {
     .header {
-      font-size: 2em;
-      padding-right: .1em;
-      margin-right: .1em;
+      padding-right: 0.1em;
+      margin-right: 0.1em;
       height: 4em; } }
 
 .header_title {
@@ -30,27 +29,26 @@ html {
   justify-content: space-between; }
 
 .title {
-  font-family: Main;
   font-size: 2em;
-  padding-right: .25em;
-  margin-right: .25em; }
+  padding-right: 0.25em;
+  margin-right: 0.25em; }
   @media (max-width: 850px) {
     .title {
-      font-size: .75em;
-      padding-right: .1em;
-      margin-right: .1em; } }
+      font-size: 0.75em;
+      padding-right: 0.1em;
+      margin-right: 0.1em; } }
   @media (min-width: 850px) and (max-width: 1024px) {
     .title {
-      font-size: .75em;
-      padding-right: .1em;
-      margin-right: .1em; } }
+      font-size: 0.75em;
+      padding-right: 0.1em;
+      margin-right: 0.1em; } }
 
 .mainLogo {
   height: 3em;
   width: 4em; }
   @media (max-width: 950px) {
     .mainLogo {
-      height: .75em;
+      height: 0.75em;
       width: 1em; } }
   @media (min-width: 750px) and (max-width: 1240px) {
     .mainLogo {
@@ -60,6 +58,7 @@ html {
 
 .top-bar {
   display: flex;
+  height: 50px;
   flex-direction: row;
   justify-content: space-around;
   background-color: #50AADF; }
@@ -67,11 +66,13 @@ html {
     display: flex;
     cursor: pointer;
     justify-content: center;
-    border: .25em solid black;
+    align-items: center;
     width: 100%;
     margin: 0;
     padding: 0;
     font-size: 1em; }
+  .top-bar .navigation:hover {
+    background-color: #D48C3C; }
 
 .loginPage {
   display: flex;
@@ -79,16 +80,24 @@ html {
   height: 7em;
   flex-direction: column;
   justify-content: center;
-  margin-left: 1em; }
+  margin-left: 1em;
+  margin-top: -1.25em; }
+  @media (max-width: 850px) {
+    .loginPage {
+      height: 3em;
+      margin-top: 0; } }
 
 .loginFields {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   flex-wrap: nowrap; }
+  @media (max-width: 850px) {
+    .loginFields {
+      flex-direction: row; } }
 
 .inputfield {
-  background-color: white; }
+  background-color: #FFFFFF; }
 
 .userButton {
   display: flex;
@@ -100,12 +109,16 @@ html {
     justify-content: flex-end;
     align-content: flex-end;
     margin-right: 2em;
-    margin-bottom: .5em;
-    background-color: black;
-    color: white; }
+    margin-bottom: 0.5em;
+    background-color: #000;
+    color: #FFFFFF; }
 
 .mainArea {
-  display: flex; }
+  display: flex;
+  overflow: scroll;
+  justify-content: center;
+  padding: 5px;
+  margin: 5px; }
 
 .dropdownSelector {
   display: flex;
@@ -113,23 +126,26 @@ html {
   align-items: flex-end; }
 
 .PicDisplay {
-  display: flex;
-  width: 100vw;
-  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
   overflow: scroll; }
 
 .Display {
-  border: 10px solid black;
+  border: 10px solid #000;
   width: 20em;
   height: 20em; }
 
 .BrianBoitano {
-  border: 15px solid blue; }
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px; }
 
 .selectionpage {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 10px;
   width: 100%;
-  flex-flow: row;
   justify-content: space-between; }
 
 .operatingArea {
@@ -148,117 +164,117 @@ html {
     width: 100%;
     padding-left: 3px; }
 
-.operatingArea {
-  display: inline-flex;
-  padding: 0px;
-  text-align: center;
+.selection {
+  display: flex;
+  flex-direction: row;
+  height: 28%; }
+
+.dropdownStyle {
+  background: #FFFFFF;
+  font-family: Main; }
+
+.dropdownMenu {
+  display: flex; }
+
+.people li {
+  height: 35px; }
+
+.calendar-container,
+.calendar,
+.calendar-header,
+td,
+tr {
+  font-family: Main;
+  padding: 0;
+  margin: 0; }
+
+.calendar-container {
+  border: 10px double #50AADF; }
+
+.calendar {
+  background-color: #FFFFFF;
+  border-spacing: 0;
+  border-collapse: collapse;
   width: 100%; }
 
-li {
-  border-right: 1px solid black; }
+.calendar-header {
+  border-bottom: 1px dashed #50AADF;
+  font-size: 1.6em; }
 
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: inline-block;
-  width: 100%;
-  background: #ddd; }
+.calendar-header td {
+  border-spacing: 0;
+  padding-left: 5px; }
 
-ul > li {
-  display: inline-flex;
-  justify-content: center;
-  width: 150px;
-  height: 65px;
-  line-height: 65px;
-  position: relative;
-  text-transform: uppercase;
-  font-size: 14px;
-  cursor: pointer; }
+.day,
+.empty-slot,
+.week-day {
+  text-align: center;
+  height: 40px; }
 
-ul > li:hover {
-  background: #d5d5d5;
-  border-radius: 5px; }
+.week-day {
+  font-size: 0.8em; }
 
-ul.pickupArea {
+.day {
+  font-size: 0.8em; }
+
+.day {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  line-height: 24px; }
+
+.standby {
+  display: block;
+  border: 4px double yellow;
+  border-radius: 100px; }
+
+.fly {
+  display: block;
+  border: 4px double green;
+  border-radius: 100px; }
+
+.flyno {
+  display: block;
+  border: 4px double yellow;
+  border-radius: 100px; }
+
+.current-day {
+  background-color: #D48C3C;
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+  border-radius: 35%;
+  color: #FFFFFF; }
+
+.selected-day {
+  background-color: green;
+  line-height: 28px;
+  border-radius: 100px;
+  color: black; }
+
+.month-popup {
   position: absolute;
-  left: 0%;
-  width: 100%;
-  padding: 0; }
+  padding: 5px;
+  background: white;
+  border: 2px solid skyblue; }
 
-ul.pickupArea li {
-  background: #666;
-  color: rgba(255, 255, 255, 0.7); }
+.month-popup div {
+  padding: 0.3em; }
 
-ul.pickupArea li:hover {
-  background: #606060; }
+.nav-month {
+  position: absolute;
+  top: 0.6em;
+  font-size: 0.6em;
+  right: 3px; }
 
-ul.pickupArea li:last-child {
-  border-radius: 0px 0px 5px 5px; }
+.editor-year {
+  max-width: 3.6em; }
 
-ul.pickupArea li {
-  display: none; }
+.label-month,
+.label-year {
+  font-size: 0.6em; }
 
-li:hover > ul.pickupArea li {
-  display: block; }
-
-li:hover > ul.pickupArea.menu-1 {
-  perspective: 1000px; }
-
-li:hover > ul.pickupArea.menu-1 li {
-  opacity: 0; }
-
-li:hover > ul.pickupArea.menu-1 li:nth-child(1) {
-  animation-name: menu1;
-  animation-duration: 100ms;
-  animation-delay: 0ms;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards; }
-
-li:hover > ul.pickupArea.menu-1 li:nth-child(2) {
-  animation-name: menu1;
-  animation-duration: 100ms;
-  animation-delay: 100ms;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards; }
-
-li:hover > ul.pickupArea.menu-1 li:nth-child(3) {
-  animation-name: menu1;
-  animation-duration: 100ms;
-  animation-delay: 200ms;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards; }
-
-li:hover > ul.pickupArea.menu-1 li:nth-child(4) {
-  animation-name: menu1;
-  animation-duration: 100ms;
-  animation-delay: 300ms;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards; }
-
-li:hover > ul.pickupArea.menu-1 li:nth-child(5) {
-  animation-name: menu1;
-  animation-duration: 100ms;
-  animation-delay: 400ms;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards; }
-
-li:hover > ul.pickupArea.menu-1 li:nth-child(6) {
-  animation-name: menu1;
-  animation-duration: 100ms;
-  animation-delay: 500ms;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards; }
-
-/*Animation calls*/
-@keyframes menu1 {
-  0% {
-    opacity: 0;
-    transform: rotateX(-90deg);
-    transform-origin: top; }
-  100% {
-    opacity: 1;
-    transform: rotateX(0deg);
-    transform-origin: top; } }
+.label-month {
+  cursor: pointer; }
 
 /*# sourceMappingURL=app.css.map */
