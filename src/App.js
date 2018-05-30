@@ -61,7 +61,6 @@ class App extends Component {
       .then(snapshot => {
         let logInSucess = "Logging in...";
         const userName = "Welcome back";
-        console.log("Yer in");
         this.setState({ user: snapshot.email });
         this.setState({ uid: snapshot.uid });
         localStorage.setItem("email", snapshot.email);
@@ -70,7 +69,7 @@ class App extends Component {
 
       .catch(error => {
         let failStatus = "Email/Password is incorrect. Please try again";
-        console.log(error.code, "Not today buddy");
+        alert("Incorrect Email/Password")
       });
   }
 
@@ -95,7 +94,6 @@ class App extends Component {
     );
     let resMapOne = Object.keys(res).map(key => {
       let date = res[key].date;
-      // console.log(res[key].reservationOne.timeSlot, res[key]);
       let flyTime = res[key].reservationOne.timeSlot;
       let mappedRes = date;
       return mappedRes;
@@ -140,7 +138,7 @@ class App extends Component {
         timeSlot: Res.timeSlot
       }
     };
-
+    //Have this working for entering date with reservationOne, Now I need to go through and figure out how to push reservationTwo
     if (
       resMapOne.includes(Res.day + " " + Res.timeSlot) &&
       resMapTwo.includes(Res.day + " " + Res.timeSlot)
@@ -155,32 +153,37 @@ class App extends Component {
         "This time slot is not avaiable please select a different time on that day"
       );
     } else {
-      const checkRes = Object.keys(res).map(key => {
+      //Checking days to imput either reservation One or Two
+      const checkFilter = Object.keys(res)
+        .map(key => res[key])
+        .filter(key => {
+          let varKey = [];
+            varKey = key;
+            const updatedReservationsAM = {
+              ...this.state.production.days,
+              [Res.day]: addReservationAM
+            };
+            this.setState(prevState => ({
+              production: {
+                ...prevState.production,
+                days: updatedReservationsAM
+              }
+            }));
+            return varKey;
+        });
+      // This should be the area that getting reservationTwo pushed in.
+
+      const checkRes = Object.keys(res).filter(key => {
         let resOne = res[key];
-        console.log(Object.keys(!resOne).includes("reservationOne"));
-        if (Object.keys(resOne).includes("reservationOne")) {
+        if (resOne.date === Res.day) {
           const updatedReservationsPM = {
             ...this.state.production.days,
             [Res.day]: addReservationPM
           };
-          console.log("going with the second Res!", res[key].date);
-          console.log(Res, res[key]);
           this.setState(prevState => ({
             production: {
               ...prevState.production,
               days: updatedReservationsPM
-            }
-          }));
-        } else if (Object.keys(!resOne).includes("reservationOne")) {
-          const updatedReservationsAM = {
-            ...this.state.production.days,
-            [Res.day]: addReservationAM
-          };
-          console.log("goign with the first instead!", res[key].date);
-          this.setState(prevState => ({
-            production: {
-              ...prevState.production,
-              days: updatedReservationsAM
             }
           }));
         }
@@ -198,91 +201,6 @@ class App extends Component {
           Res.timeSlot
       );
 
-      //Map over next variable and then push res into Reservation One. Repeat with resTwo in different statement
-      // const updatedReservations = { ...updatedNewRes, Res };
-      // let mappedStateReservation = Object.keys(res).map(key => {
-      //   let checkRes = Object.keys(res[key]);
-      //   // console.log(
-      //   //   checkRes[key].includes("reservationOne" || "reservationTwo"),
-      //   //   checkRes[key]
-      //   // );
-      //   if (checkRes[key].includes("reservationOne" || "reservationTwo")) {
-      //     console.log(
-      //       checkRes[key].includes("reservationOne"),
-      //       checkRes[key].date
-      //     );
-      //     const updatedReservationsPM = {
-      //       ...this.state.production.days,
-      //       [Res.day]: addReservationPM
-      //     };
-      //     console.log("going with the second Res!", res[key].date);
-      //     this.setState(prevState => ({
-      //       production: {
-      //         ...prevState.production,
-      //         days: updatedReservationsPM
-      //       }
-      //     }));
-      //   } else {
-      //     const updatedReservationsAM = {
-      //       ...this.state.production.days,
-      //       [Res.day]: addReservationAM
-      //     };
-      //     console.log("goign with the first instead!", res[key].date);
-      //     this.setState(prevState => ({
-      //       production: {
-      //         ...prevState.production,
-      //         days: updatedReservationsAM
-      //       }
-      //     }));
-      //   }
-      //   return res[key];
-      // });
-
-      // const addReservationAM = {
-      //   date: Res.day,
-      //   ref: `https://bluebirdheli-d1f5.firebaseio.com/staging/days/${Res.day}`,
-      //   reservationOne: {
-      //     groupUID: this.state.uid,
-      //     numberOfAttendees: Number(Res.numberOfAttendees),
-      //     operatingArea: Res.operatingArea,
-      //     pickupLocation: Res.pickupLocation,
-      //     pickupTime: "figure this out",
-      //     ref: `https://bluebirdheli-d1f5.firebaseio.com/staging/days/${
-      //       Res.day
-      //     }`,
-      //     timeSlot: Res.timeSlot
-      //   }
-      // };
-      // const addReservationPM = {
-      //   date: Res.day,
-      //   ref: `https://bluebirdheli-d1f5.firebaseio.com/staging/days/${Res.day}`,
-      //   reservationTwo: {
-      //     groupUID: this.state.uid,
-      //     numberOfAttendees: Number(Res.numberOfAttendees),
-      //     operatingArea: Res.operatingArea,
-      //     pickupLocation: Res.pickupLocation,
-      //     pickupTime: "figure this out",
-      //     ref: `https://bluebirdheli-d1f5.firebaseio.com/staging/days/${
-      //       Res.day
-      //     }`,
-      //     timeSlot: Res.timeSlot
-      //   }
-      // };
-
-      // const updatedReservationsAM = {
-      //   ...this.state.production.days,
-      //   [Res.day]: addReservationAM
-      // };
-      // const updatedReservationsPM = {
-      //   ...this.state.production.days,
-      //   [Res.day]: addReservationPM
-      // };
-      // // this.setState(prevState => ({
-      // //   production: {
-      // //     ...prevState.production,
-      // //     days: updatedReservationsAM
-      // //   }
-      // // }));
     }
   }
 
@@ -307,7 +225,6 @@ class App extends Component {
           newReservation={this.newReservation.bind(this)}
         />
       );
-      console.log("Calendar page");
     } else if (this.state.page === 2 && this.state.user !== null) {
       userPage = (
         <Pics
@@ -318,7 +235,6 @@ class App extends Component {
           videos={this.state.production.videos}
         />
       );
-      console.log("Pics page");
     }
 
     return (
