@@ -69,10 +69,22 @@ class App extends Component {
 
       .catch(error => {
         let failStatus = "Email/Password is incorrect. Please try again";
-        alert("Incorrect Email/Password")
+        alert("Incorrect Email/Password");
       });
   }
 
+  resetPassword(resetPass) {
+    const email = resetPass;
+    const promise = auth.sendPasswordResetEmail(email);
+    promise
+      .then(snapshot => {
+        console.log("Sent email");
+      })
+      .catch(error => {
+        console.log("not sent");
+      });
+    console.log(email);
+  }
   logOut(pageLogout) {
     this.setState({ user: null });
     this.setState({ uid: null });
@@ -158,18 +170,18 @@ class App extends Component {
         .map(key => res[key])
         .filter(key => {
           let varKey = [];
-            varKey = key;
-            const updatedReservationsAM = {
-              ...this.state.production.days,
-              [Res.day]: addReservationAM
-            };
-            this.setState(prevState => ({
-              production: {
-                ...prevState.production,
-                days: updatedReservationsAM
-              }
-            }));
-            return varKey;
+          varKey = key;
+          const updatedReservationsAM = {
+            ...this.state.production.days,
+            [Res.day]: addReservationAM
+          };
+          this.setState(prevState => ({
+            production: {
+              ...prevState.production,
+              days: updatedReservationsAM
+            }
+          }));
+          return varKey;
         });
       // This should be the area that getting reservationTwo pushed in.
 
@@ -200,7 +212,6 @@ class App extends Component {
           ". Your pick up time is in the " +
           Res.timeSlot
       );
-
     }
   }
 
@@ -209,7 +220,7 @@ class App extends Component {
     if (this.state.user == null) {
       userPage = (
         <div>
-          <h1> Please Log in!</h1>
+          <h1 className="font"> Please Log In!</h1>
         </div>
       );
     } else if (this.state.page === 1 && this.state.user !== null) {
@@ -244,6 +255,7 @@ class App extends Component {
             user={this.state.user}
             uid={this.state.uid}
             renderLogin={this.renderLogin.bind(this)}
+            resetPassword={this.resetPassword.bind(this)}
             logOut={this.logOut.bind(this)}
             reservations={this.state.production.days}
           />

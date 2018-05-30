@@ -22,6 +22,7 @@ class Header extends Component {
           className="userName"
           user={this.props.user}
           uid={this.props.uid}
+          resetPassword={this.props.resetPassword.bind(this)}
           renderLogin={this.props.renderLogin.bind(this)}
           logOut={this.props.logOut.bind(this)}
         />

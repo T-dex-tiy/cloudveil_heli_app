@@ -113,6 +113,14 @@ html {
     background-color: #000;
     color: #FFFFFF; }
 
+.button {
+  color: #000;
+  font-family: Main;
+  background-color: #D48C3C; }
+
+.button:hover {
+  background-color: #50AADF; }
+
 .mainArea {
   display: flex;
   overflow: scroll;

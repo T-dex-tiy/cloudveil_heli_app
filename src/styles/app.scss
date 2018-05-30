@@ -148,6 +148,14 @@ html {
     color: $cloudveilWhite;
   }
 }
+.button{
+  color:$cloudveilBlack;
+  font-family: Main;
+  background-color:$cloudveilGold ;
+}
+.button:hover{
+  background-color: $cloudveilBlue;
+}
 //main area
 
 .mainArea {
