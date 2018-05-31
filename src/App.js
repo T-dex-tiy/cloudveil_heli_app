@@ -10,6 +10,7 @@ import Pics from "./customerPics/pictures";
 import NavBar from "./navComponents";
 import Weather from "./weather.js/weather";
 import { withRouter } from "react-router-dom";
+import axios from "axios";
 
 const base = Rebase.createClass(firebase.database());
 
@@ -176,12 +177,12 @@ class App extends Component {
             [Res.day]: addReservationAM
           };
           console.log(updatedReservationsAM);
-          // this.setState(prevState => ({
-          //   production: {
-          //     ...prevState.production,
-          //     days: updatedReservationsAM
-          //   }
-          // }));
+          this.setState(prevState => ({
+            production: {
+              ...prevState.production,
+              days: updatedReservationsAM
+            }
+          }));
           return varKey;
         });
       // This should be the area that getting reservationTwo pushed in.
@@ -193,12 +194,12 @@ class App extends Component {
             ...this.state.production.days,
             [Res.day]: addReservationPM
           };
-          // this.setState(prevState => ({
-          //   production: {
-          //     ...prevState.production,
-          //     days: updatedReservationsPM
-          //   }
-          // }));
+          this.setState(prevState => ({
+            production: {
+              ...prevState.production,
+              days: updatedReservationsPM
+            }
+          }));
         }
       });
       alert(
@@ -233,16 +234,33 @@ class App extends Component {
                 users: updatedUser
               }
             }));
-            console.log(updatedRemainingtrips, updatedUser);
             return key.remainingTrips;
           }
         });
-      console.log(removeDays);
+      console.log(res, Res);
+      console.log(
+        addReservationAM.reservationOne || addReservationPM.reservationTwo
+      );
     }
+    const emailUserAndAdmin = axios.post("api/form", {
+      res
+    });
   }
 
   render() {
-    var userPage;
+    let remainingFlyingDays;
+    if (this.state.user !== null) {
+      const remainingDays = { ...this.state.production.users };
+      Object.keys(remainingDays)
+        .map(key => this.state.production.users[key])
+        .filter(key => {
+          if (key.uid === this.state.uid) {
+            remainingFlyingDays = key.remainingTrips;
+            return key.remainingTrips;
+          }
+        });
+    }
+    let userPage;
     if (this.state.user == null) {
       userPage = (
         <div>
@@ -284,6 +302,7 @@ class App extends Component {
             resetPassword={this.resetPassword.bind(this)}
             logOut={this.logOut.bind(this)}
             reservations={this.state.production.days}
+            remainingDays={remainingFlyingDays}
           />
           <NavBar
             eventEmitter={this.eventEmitter}

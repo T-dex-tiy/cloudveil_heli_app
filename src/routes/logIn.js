@@ -17,14 +17,12 @@ class logIn extends Component {
     const email = this.refs.email.value;
     const userdata = { email, pass };
     this.props.renderLogin(userdata);
-    console.log(this.props.user, this.props.uid);
   }
   resetPass() {
     const email = this.refs.email.value;
     this.props.resetPassword(email);
   }
   pageLogout() {
-    console.log("signed out!");
     const email = null;
     const uid = null;
     const userData = { email, uid };
@@ -81,6 +79,7 @@ class logIn extends Component {
               Log Out
             </button>
           </div>
+          You have {this.props.remainingDays} days left
         </div>
       );
     }

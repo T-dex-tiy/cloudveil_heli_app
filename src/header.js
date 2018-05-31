@@ -12,10 +12,8 @@ class Header extends Component {
     const madeReservations = Object.keys(this.props.reservations).map(
       key => this.props.reservations[key]
     );
-    console.log(madeReservations);
     const updatedReservations = madeReservations.map(key => [key]);
 
-    console.log(updatedReservations);
     return (
       <div className="header font">
         <LogIn
@@ -25,6 +23,7 @@ class Header extends Component {
           resetPassword={this.props.resetPassword.bind(this)}
           renderLogin={this.props.renderLogin.bind(this)}
           logOut={this.props.logOut.bind(this)}
+          remainingDays={this.props.remainingDays}
         />
         <div className="header_title">
           <h1 className="title font">Bluebird Heli</h1>

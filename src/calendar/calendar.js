@@ -188,28 +188,30 @@ class Calendar extends Component {
         </td>
       );
     }
-
+    //Removed className from current day until figure out how to display correct day and flying days
     let daysInMonth = [];
     for (let day = 1; day <= this.daysInMonth(); day++) {
       let month = moment().month() + 1;
       let monthToString = month.toString();
       let classDate = monthToString + "-" + day.toString();
-      let nextFlyDay = monthToString + "-" + (day + 1).toString();
+      // let nextFlyDay = monthToString + "-" + (day + 1).toString();
       let currentDate = monthToString + "-" + this.currentDay();
-      let tommorow = monthToString + "-" + this.tomorrowDay();
-      let twoDaysOut = monthToString + "-" + this.twoDaysOut();
+      // let tommorow = monthToString + "-" + this.tomorrowDay();
+      // let twoDaysOut = monthToString + "-" + this.twoDaysOut();
       let className = classDate == currentDate ? "day current-day" : "day";
       let selectedClass = day == this.state.selectedDay ? " selected-day " : "";
       let flyingDay1 = day == this.tomorrowDay() ? "fly " : "flyno ";
       let standby = "standby";
       let dayPickup = day < 10 ? "0" + day : day;
+      let monthPickUp =
+        monthToString < 10 ? "0" + monthToString : monthToString;
       let reservationDate =
         this.year() + "-" + this.monthShort() + "-" + dayPickup;
       daysInMonth.push(
-        <td key={day} ref="day" className={className}>
+        <td key={monthPickUp + "-" + dayPickup} ref="day">
           <span
-            value={monthToString + "-" + day}
-            className={flyingDay1 + selectedClass}
+            value={monthToString + "-" + dayPickup}
+            className={selectedClass}
             onClick={e => {
               this.onDayClick(e, reservationDate, day);
             }}
