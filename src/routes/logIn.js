@@ -77,7 +77,9 @@ class logIn extends Component {
         <div>
           Welcome back {this.props.user}
           <div>
-            <button onClick={() => this.pageLogout()}>Log Out</button>
+            <button className="button" onClick={() => this.pageLogout()}>
+              Log Out
+            </button>
           </div>
         </div>
       );

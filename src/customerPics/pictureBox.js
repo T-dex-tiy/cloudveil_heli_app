@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import InstaFeed from "../instafeed"
 
 class PicBox extends Component {
   constructor(props) {
@@ -28,8 +29,7 @@ class PicBox extends Component {
         </div>
       );
     });
-    console.log(uiDisplay);
-    return <div className="BrianBoitano">{uiDisplay}</div>;
+    return <div><div className="BrianBoitano">{uiDisplay}</div><InstaFeed/></div>;
   }
 }
 export default PicBox;

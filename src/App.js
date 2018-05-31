@@ -175,12 +175,13 @@ class App extends Component {
             ...this.state.production.days,
             [Res.day]: addReservationAM
           };
-          this.setState(prevState => ({
-            production: {
-              ...prevState.production,
-              days: updatedReservationsAM
-            }
-          }));
+          console.log(updatedReservationsAM);
+          // this.setState(prevState => ({
+          //   production: {
+          //     ...prevState.production,
+          //     days: updatedReservationsAM
+          //   }
+          // }));
           return varKey;
         });
       // This should be the area that getting reservationTwo pushed in.
@@ -192,12 +193,12 @@ class App extends Component {
             ...this.state.production.days,
             [Res.day]: addReservationPM
           };
-          this.setState(prevState => ({
-            production: {
-              ...prevState.production,
-              days: updatedReservationsPM
-            }
-          }));
+          // this.setState(prevState => ({
+          //   production: {
+          //     ...prevState.production,
+          //     days: updatedReservationsPM
+          //   }
+          // }));
         }
       });
       alert(
@@ -212,6 +213,31 @@ class App extends Component {
           ". Your pick up time is in the " +
           Res.timeSlot
       );
+      const removeDays = Object.keys(this.state.production.users)
+        .map(key => this.state.production.users[key])
+        .map(key => {
+          if (key.uid === this.state.uid) {
+            const user = key;
+            const usedDay = key.remainingTrips - 1;
+            const updatedRemainingtrips = {
+              ...user,
+              remainingTrips: usedDay
+            };
+            const updatedUser = {
+              ...this.state.production.users,
+              [key.uid]: updatedRemainingtrips
+            };
+            this.setState(prevState => ({
+              production: {
+                ...prevState.production,
+                users: updatedUser
+              }
+            }));
+            console.log(updatedRemainingtrips, updatedUser);
+            return key.remainingTrips;
+          }
+        });
+      console.log(removeDays);
     }
   }
 
