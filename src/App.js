@@ -28,6 +28,7 @@ class App extends Component {
     };
     this.logOut = this.logOut.bind(this);
     this.renderLogin = this.renderLogin.bind(this);
+    this.newReservation = this.newReservation.bind(this);
   }
 
   componentDidMount() {
@@ -101,7 +102,7 @@ class App extends Component {
     this.setState({ uid: localStorage.uid });
   }
 
-  newReservation(Res) {
+  async newReservation(Res) {
     let res = Object.keys(this.state.production.days).map(
       key => this.state.production.days[key]
     );
@@ -241,10 +242,12 @@ class App extends Component {
       console.log(
         addReservationAM.reservationOne || addReservationPM.reservationTwo
       );
+      const { user } = this.state;
+      const emailUserAndAdmin = await axios.post("api/form", {
+        user,
+        Res
+      });
     }
-    const emailUserAndAdmin = axios.post("api/form", {
-      res
-    });
   }
 
   render() {
